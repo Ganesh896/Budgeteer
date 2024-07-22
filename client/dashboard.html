@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dashboard</title>
+
+        <!-- boxicons -->
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+        <link rel="stylesheet" href="./src/assets/css/style.css" />
+    </head>
+    <body>
+        <main>
+            <aside class="sidebar">
+                <div class="container">
+                    <div class="sidebar__header">
+                        <div class="sidebar__header--logo">
+                            <img src="./public/images/budgetter-logo.png" alt="logo" />
+                        </div>
+                        <h2>Budgetter</h2>
+                    </div>
+                    <div class="sidebar__content">
+                        <ul>
+                            <li class="sidebar__item active">
+                                <a href="#"><i class="bx bx-grid-alt"></i>Dashboard</a>
+                            </li>
+                            <li class="sidebar__item">
+                                <a href="#"><i class="bx bx-file"></i>Transactions</a>
+                            </li>
+                            <li class="sidebar__item">
+                                <a href="#"><i class="bx bx-wallet"></i> Wallet</a>
+                            </li>
+                            <li class="sidebar__item">
+                                <a href="#"><i class="bx bx-podcast"></i>Goals</a>
+                            </li>
+                            <li class="sidebar__item">
+                                <a href="#"><i class="bx bx-money"></i>Budget</a>
+                            </li>
+                            <li class="sidebar__item">
+                                <a href="#"><i class="bx bx-cog"></i>Settings</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar__bottom">
+                        <div>
+                            <a href="#">Logout</a>
+                        </div>
+                        <div class="theme__button">
+                            <input type="checkbox" class="checkbox" id="checkbox" />
+                            <label for="checkbox" class="checkbox-label">
+                                <i class="bx bx-moon"></i>
+                                <i class="bx bx-sun"></i>
+                                <span class="ball"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <div class="main__container"></div>
+        </main>
+    </body>
+</html>

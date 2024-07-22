@@ -1,0 +1,19 @@
+{
+    "name": "client",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "sass": "sass --watch src/assets/css/sass/style.scss src/assets/css/style.css"
+    },
+    "devDependencies": {
+        "typescript": "^5.2.2",
+        "vite": "^5.3.4"
+    },
+    "dependencies": {
+        "axios": "^1.7.2"
+    }
+}

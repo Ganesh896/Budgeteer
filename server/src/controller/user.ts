@@ -4,6 +4,7 @@ import HttpStatusCodes from "http-status-codes";
 import * as userService from "../service/user";
 import { asyncHandler } from "../utils/asyncHandler";
 import { ApiResponse } from "../utils/response";
+
 export const register = asyncHandler(async (req: Request, res: Response) => {
     const user = req.body;
     const message = await userService.register(user);

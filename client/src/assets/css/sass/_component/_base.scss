@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: $black;
+    overflow-x: hidden;
+    transition: all 0.5s ease;
+    background-color: $white;
+    letter-spacing: 0.3px;
+}
+
+html,
+body {
+    overflow-x: hidden !important;
+    width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    color: $black;
+}
+
+p {
+    color: $black;
+}
+
+.title {
+    @include typography(clamp(32px, 4vw, 48px), 600);
+}
+
+.subtitle {
+    @include typography(clamp(24px, 4vw, 32px), 600);
+}
+
+.small__title {
+    @include typography(clamp(18px, 3vw, 24px), 600);
+}
+
+.large__text {
+    @include typography(clamp(16px, 2vw, 18px), 600);
+}
+
+.normal__text {
+    @include typography(clamp(14px, 2vw, 16px), 600);
+}
+
+.small__text {
+    @include typography(clamp(12px, 1vw, 14px), 600);
+}
+
+.meta__text {
+    @include typography(12px, 500);
+}
+
+.m {
+    &__tb {
+        margin-top: 50px;
+        margin-bottom: 50px;
+
+        &--t {
+            margin-top: 50px;
+        }
+
+        &--b {
+            margin-bottom: 50px;
+        }
+    }
+}
+
+.p {
+    padding: 50px;
+    &__tb {
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+        &--t {
+            padding-top: 50px;
+        }
+
+        &--b {
+            padding-bottom: 50px;
+        }
+    }
+}
+
+input {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+textarea.form-control::placeholder,
+input.form-control::placeholder {
+    color: #797373;
+    font-size: 14px;
+}
+
+.l__button {
+    letter-spacing: 0.15rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+    color: $white !important;
+    text-transform: capitalize;
+    border: 2px solid $white;
+    @include typography(clamp(14px, 2vw, 16px), 600);
+    padding: 10px 16px;
+    background-color: $white;
+    border-radius: 6px;
+    display: inline-block;
+    transition: all 1s ease;
+    text-decoration: none;
+    text-align: center;
+
+    &--primary {
+        color: $white;
+        background-color: $primary;
+        border-color: $primary;
+    }
+    &--secondary {
+        color: $white;
+        background-color: $secondary;
+        border-color: $secondary;
+
+        &:hover {
+            border-color: $primary;
+        }
+    }
+}

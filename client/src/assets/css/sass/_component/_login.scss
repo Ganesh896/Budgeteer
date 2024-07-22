@@ -1,0 +1,84 @@
+.login-register {
+    height: 100vh;
+    @include flex-box(center, center, 0);
+
+    a {
+        text-decoration: none;
+        color: blue;
+    }
+
+    .signin__error,
+    .signup__error {
+        color: $red;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .form__group {
+        margin-bottom: 16px;
+        @include flex-box(flex-start, center, 10px);
+
+        input {
+            padding: 18px;
+            outline: none;
+            border: 1px solid $grey;
+            width: 100%;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+    }
+
+    button {
+        width: 100%;
+        padding: 20px;
+        outline: none;
+        background: $primary;
+        border: none;
+        @include typography(18px, 600);
+        color: $white;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+}
+
+.signin {
+    width: 500px;
+    border: 1px solid $grey;
+    padding: 40px;
+    border-radius: 10px;
+
+    &__header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .form {
+        &__group {
+            width: 100%;
+            margin-bottom: 16px;
+        }
+    }
+
+    &__footer {
+        text-align: center;
+        margin-top: 20px;
+    }
+}
+
+.signup {
+    width: 600px;
+    border: 1px solid $grey;
+    padding: 40px;
+    border-radius: 10px;
+    display: none;
+
+    &__header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    &__footer {
+        text-align: center;
+        margin-top: 20px;
+    }
+}
