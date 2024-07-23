@@ -1,11 +1,137 @@
+.dark__theme {
+    color: $white;
+    background: #111;
+
+    button {
+        color: $white;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h4,
+    h5,
+    h6,
+    p {
+        color: $white;
+    }
+
+    .sidebar {
+        background: $black;
+
+        &__toggle {
+            background: #111;
+        }
+
+        &__bottom {
+            a {
+                color: $primary;
+            }
+        }
+
+        ul li a {
+            color: $primary;
+        }
+    }
+
+    .dashboard {
+        .categories {
+            ul {
+                color: $white !important;
+            }
+        }
+    }
+}
+img {
+    width: 50px;
+    max-width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
 main {
     display: flex;
 }
+
 .sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     background: $tertiary;
-    width: 20%;
+    width: 280px;
     height: 100vh;
-    padding: 40px;
+    padding: 40px 20px;
+    z-index: 1;
+    transition: all 0.5s ease-in-out;
+
+    &.close {
+        @include flex-box(center, flex-start, 0);
+        width: 80px;
+
+        span {
+            display: none;
+        }
+
+        .sidebar__toggle {
+            right: -25px;
+        }
+
+        .sidebar__header {
+            gap: 0;
+        }
+
+        .container,
+        .sidebar__bottom,
+        ul {
+            @include flex-box(center, center, 0);
+            flex-direction: column;
+        }
+
+        .sidebar__item {
+            &.active {
+                @include hw(50px, 50px);
+            }
+        }
+
+        .theme__button {
+            .checkbox-label {
+                width: 70px;
+
+                .ball {
+                    left: 3px;
+                    display: block;
+                }
+            }
+
+            .bx-moon,
+            .bx-sun {
+                font-size: 20px;
+            }
+
+            .checkbox:checked + .checkbox-label .ball {
+                transform: translateX(32px);
+            }
+        }
+    }
+
+    .container {
+        position: relative;
+    }
+
+    &__toggle {
+        position: absolute;
+        cursor: pointer;
+        right: -34px;
+        top: 40px;
+        @include hw(40px, 40px);
+        text-align: center;
+        outline: none;
+        border: none;
+        font-size: 24px;
+        border-radius: 50%;
+        background: $white;
+    }
 
     &__header {
         @include flex-box(flex-start, center, 12px);
@@ -18,12 +144,15 @@ main {
             list-style: none;
 
             .sidebar__item {
-                // margin-bottom: 16px;
-                padding: 14px 12px;
+                padding: 12px;
 
                 &.active {
                     background: $primary;
                     border-radius: 30px;
+
+                    a {
+                        color: $white;
+                    }
                 }
 
                 a {
@@ -39,54 +168,278 @@ main {
             }
         }
     }
+
+    &__bottom {
+        margin-top: 60px;
+        .logout a {
+            text-decoration: none;
+            @include flex-box(flex-start, center, 10px);
+
+            i {
+                font-size: 24px;
+            }
+        }
+
+        //theme cahange button
+        .theme__button {
+            margin-top: 20px;
+            .checkbox {
+                opacity: 0;
+                position: absolute;
+            }
+
+            .checkbox-label {
+                @include flex-box(space-between, center, 0);
+                position: relative;
+                width: 85px;
+                height: 38px;
+                border-radius: 30px;
+                border: 1px solid $grey;
+                padding: 8px;
+                cursor: pointer;
+            }
+
+            .bx-moon,
+            .bx-sun {
+                color: $grey;
+                font-size: 24px;
+            }
+
+            .checkbox-label .ball {
+                background-color: $primary;
+                width: 30px;
+                height: 30px;
+                position: absolute;
+                left: 5px;
+                top: 3px;
+                border-radius: 50%;
+                transition: transform 0.2s linear;
+                opacity: 0.5;
+            }
+
+            .checkbox:checked + .checkbox-label .ball {
+                transform: translateX(43px);
+            }
+        }
+    }
 }
 
-.main__container {
-    width: 80%;
-}
+.dashboard {
+    width: 100%;
+    padding: 40px 24px;
+    margin-left: 280px;
+    transition: all 0.5s ease-in-out;
 
-img {
-    width: 50px;
-    max-width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
+    &.open {
+        margin-left: 80px;
+    }
 
-//theme cahange button
-.checkbox {
-    opacity: 0;
-    position: absolute;
-}
+    .header {
+        @include flex-box(space-between, center, 0);
+        margin-bottom: 40px;
 
-.checkbox-label {
-    @include flex-box(space-between, center, 0);
-    position: relative;
-    width: 60px;
-    height: 27px;
-    border-radius: 30px;
-    border: 1px solid $grey;
-    padding: 6px;
-    cursor: pointer;
-}
+        &__profile {
+            @include flex-box(flex-start, center, 10px);
+        }
+    }
 
-.fa-moon,
-.fa-sun {
-    color: $grey;
-    font-size: 16px;
-}
+    &__header {
+        @include flex-box(center, center, 10px);
+        display: none;
+    }
 
-.checkbox-label .ball {
-    background-color: $primary;
-    width: 21px;
-    height: 21px;
-    position: absolute;
-    left: 3px;
-    top: 3px;
-    border-radius: 50%;
-    transition: transform 0.2s linear;
-    opacity: 0.5;
-}
+    .amount__cards {
+        @include flex-box(flex-start, center, 16px);
+        .card__grid {
+            @include flex-box(space-between, center, 16px);
+            flex-basis: 100%;
+        }
+        .amount__card {
+            border: 2px solid $grey-light;
+            border-radius: 20px;
+            padding: 20px;
+            flex-basis: 100%;
 
-.checkbox:checked + .checkbox-label .ball {
-    transform: translateX(33px);
+            .amount__card--title {
+                margin-bottom: 32px;
+            }
+
+            .amount__card--body {
+                .comparision {
+                    @include flex-box(flex-start, center, 10px);
+                    margin-top: 12px;
+
+                    .difference {
+                        @include flex-box(flex-start, center, 0);
+                        background: $green-light;
+                        border-radius: 30px;
+                        color: $green;
+                        padding: 6px;
+                        font-size: 14px;
+
+                        &.expense {
+                            background: $red-light;
+                            color: $red;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .savingbudgets {
+        @include flex-box(flex-start, center, 16px);
+        margin-top: 16px;
+
+        .budget {
+            flex-basis: 100%;
+            border: 2px solid $grey-light;
+            padding: 20px;
+            border-radius: 20px;
+
+            &__content {
+                @include flex-box(space-between, center, 0);
+
+                canvas {
+                    height: 250px !important;
+                    width: 100% !important;
+                    max-width: 300px;
+                }
+            }
+
+            .categories {
+                @include ul(0, 0);
+                list-style: none;
+                margin-top: 20px;
+
+                li {
+                    @include flex-box(flex-start, center, 8px);
+                    @include typography(16px, 600);
+                    margin-bottom: 10px;
+                    color: $black-light;
+                    i {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+
+        .saving {
+            flex-basis: 100%;
+            border: 2px solid $grey-light;
+            border-radius: 20px;
+            padding: 20px;
+            h2 {
+                margin-bottom: 16px;
+            }
+
+            &__items {
+                margin-top: 16px;
+                &--title {
+                    @include flex-box(space-between, center, 0);
+                }
+                .progress {
+                    margin-top: 10px;
+
+                    &__bar {
+                        position: relative;
+                        width: 100%;
+                        height: 16px;
+                        border-radius: 16px;
+                        background: #ddd;
+
+                        &--inner {
+                            position: absolute;
+                            content: "";
+                            width: 50%;
+                            height: 16px;
+                            background: $primary;
+                            border-radius: 20px;
+                            text-align: center;
+                            font-size: 14px;
+                            color: $white;
+                            line-height: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .expenses__analytics {
+        margin-top: 16px;
+
+        .expenses {
+            border: 2px solid $grey-light;
+            border-radius: 20px;
+            padding: 20px;
+            overflow: auto;
+
+            &__header {
+                @include flex-box(space-between, center, 0);
+                margin-bottom: 16px;
+
+                button {
+                    @include flex-box(flex-start, center, 5px);
+                    font-size: 16px;
+                    border: 1px solid $grey-light;
+                    background: none;
+                    padding: 8px 12px;
+                    border-radius: 30px;
+                }
+            }
+
+            &__list {
+                border-collapse: collapse;
+                width: 100%;
+                border-radius: 8px;
+
+                thead {
+                    background: #f6f4ff;
+                }
+
+                th {
+                    padding: 16px;
+                    font-size: 14px;
+                    text-align: center;
+                    text-align: left;
+                    color: $primary;
+                    text-transform: uppercase;
+                    font-weight: 500;
+
+                    &:first-child {
+                        border-radius: 30px 0 0 30px;
+                    }
+
+                    &:last-child {
+                        border-radius: 0 30px 30px 0;
+                    }
+                }
+
+                tr {
+                    border-bottom: 1px solid #eee;
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                }
+
+                td {
+                    padding: 20px 16px;
+                }
+            }
+        }
+
+        .money__flow {
+            border: 2px solid $grey-light;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 16px;
+            height: 400px;
+
+            #money__flow {
+                width: 100% !important;
+            }
+        }
+    }
 }

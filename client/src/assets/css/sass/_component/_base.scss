@@ -36,15 +36,15 @@ p {
 }
 
 .title {
-    @include typography(clamp(32px, 4vw, 48px), 600);
-}
-
-.subtitle {
     @include typography(clamp(24px, 4vw, 32px), 600);
 }
 
+.subtitle {
+    @include typography(clamp(18px, 2vw, 24px), 600);
+}
+
 .small__title {
-    @include typography(clamp(18px, 3vw, 24px), 600);
+    @include typography(clamp(16px, 2vw, 18px), 600);
 }
 
 .large__text {
@@ -60,7 +60,8 @@ p {
 }
 
 .meta__text {
-    @include typography(12px, 500);
+    @include typography(14px, 500);
+    color: $grey-light;
 }
 
 .m {

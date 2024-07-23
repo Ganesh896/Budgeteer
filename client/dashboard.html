@@ -14,51 +14,247 @@
         <main>
             <aside class="sidebar">
                 <div class="container">
+                    <button class="sidebar__toggle"><i class="bx bx-chevron-left"></i></button>
                     <div class="sidebar__header">
                         <div class="sidebar__header--logo">
                             <img src="./public/images/budgetter-logo.png" alt="logo" />
                         </div>
-                        <h2>Budgetter</h2>
+                        <h2 class="subtitle"><span>Budgetter</span></h2>
                     </div>
                     <div class="sidebar__content">
                         <ul>
                             <li class="sidebar__item active">
-                                <a href="#"><i class="bx bx-grid-alt"></i>Dashboard</a>
+                                <a href="#"><i class="bx bx-grid-alt"></i> <span>Dashboard</span></a>
                             </li>
                             <li class="sidebar__item">
-                                <a href="#"><i class="bx bx-file"></i>Transactions</a>
+                                <a href="#"><i class="bx bx-file"></i> <span>Transactions</span></a>
                             </li>
                             <li class="sidebar__item">
-                                <a href="#"><i class="bx bx-wallet"></i> Wallet</a>
+                                <a href="#"><i class="bx bx-wallet"></i> <span>Wallet</span></a>
                             </li>
                             <li class="sidebar__item">
-                                <a href="#"><i class="bx bx-podcast"></i>Goals</a>
+                                <a href="#"><i class="bx bx-podcast"></i> <span>Goals</span></a>
                             </li>
                             <li class="sidebar__item">
-                                <a href="#"><i class="bx bx-money"></i>Budget</a>
+                                <a href="#"><i class="bx bx-money"></i> <span>Budget</span></a>
                             </li>
                             <li class="sidebar__item">
-                                <a href="#"><i class="bx bx-cog"></i>Settings</a>
+                                <a href="#"><i class="bx bx-cog"></i> <span>Settings</span></a>
                             </li>
                         </ul>
-                    </div>
-
-                    <div class="sidebar__bottom">
-                        <div>
-                            <a href="#">Logout</a>
-                        </div>
-                        <div class="theme__button">
-                            <input type="checkbox" class="checkbox" id="checkbox" />
-                            <label for="checkbox" class="checkbox-label">
-                                <i class="bx bx-moon"></i>
-                                <i class="bx bx-sun"></i>
-                                <span class="ball"></span>
-                            </label>
+                        <div class="sidebar__bottom">
+                            <div class="logout">
+                                <a href="#"><i class="bx bx-log-in"></i><span>Logout</span></a>
+                            </div>
+                            <div class="theme__button">
+                                <input type="checkbox" class="checkbox" id="checkbox" />
+                                <label for="checkbox" class="checkbox-label">
+                                    <i class="bx bx-moon"></i>
+                                    <i class="bx bx-sun"></i>
+                                    <span class="ball"></span>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </aside>
-            <div class="main__container"></div>
+            <div class="dashboard">
+                <div class="header">
+                    <div class="header__welcome">
+                        <h1 class="title">Welcome back, Ganesh!</h1>
+                        <p class="meta__text">It is the best time to manage you finances</p>
+                    </div>
+                    <div class="dashboard__header">
+                        <div class="sidebar__header--logo">
+                            <img src="./public/images/budgetter-logo.png" alt="logo" />
+                        </div>
+                        <h2 class="subtitle"><span>Budgetter</span></h2>
+                    </div>
+                    <div class="header__profile">
+                        <div class="header__profile--img">
+                            <img src="./public/images/profile.jpg" alt="img" />
+                        </div>
+                        <div class="header__right--details">
+                            <h5 class="normal__text">Ganesh Saud</h5>
+                            <p class="meta__text">ganesh@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="amount__cards">
+                    <div class="card__grid">
+                        <div class="amount__card">
+                            <div class="amount__card--title">
+                                <h3 class="small__title">Budget</h3>
+                            </div>
+                            <div class="amount__card--body">
+                                <h2 class="subtitle">$ <span>15,600</span></h2>
+                                <div class="comparision">
+                                    <div class="difference">
+                                        <i class="bx bx-up-arrow-alt"></i>
+                                        <span>12.1%</span>
+                                    </div>
+                                    <p class="meta__text">vs last month</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="amount__card">
+                            <div class="amount__card--title">
+                                <h3 class="small__title">Expense</h3>
+                            </div>
+                            <div class="amount__card--body">
+                                <h2 class="subtitle">$ <span>15,600</span></h2>
+                                <div class="comparision">
+                                    <div class="difference expense">
+                                        <i class="bx bx-up-arrow-alt"></i>
+                                        <span>12.1%</span>
+                                    </div>
+                                    <p class="meta__text">vs last month</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__grid">
+                        <div class="amount__card">
+                            <div class="amount__card--title">
+                                <h3 class="small__title">Remaining</h3>
+                            </div>
+                            <div class="amount__card--body">
+                                <h2 class="subtitle">$ <span>15,600</span></h2>
+                                <div class="comparision">
+                                    <div class="difference">
+                                        <i class="bx bx-up-arrow-alt"></i>
+                                        <span>12.1%</span>
+                                    </div>
+                                    <p class="meta__text">vs last month</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="amount__card">
+                            <div class="amount__card--title">
+                                <h3 class="small__title">Total savings</h3>
+                            </div>
+                            <div class="amount__card--body">
+                                <h2 class="subtitle">$ <span>15,600</span></h2>
+                                <div class="comparision">
+                                    <div class="difference">
+                                        <i class="bx bx-up-arrow-alt"></i>
+                                        <span>12.1%</span>
+                                    </div>
+                                    <p class="meta__text">vs last month</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="savingbudgets">
+                    <div class="budget">
+                        <h3 class="small__title">Budget</h3>
+                        <div class="budget__content">
+                            <ul class="categories">
+                                <!-- <li><i class="bx bxs-circle"></i>Cafe & Restaurants</li>
+                                <li><i class="bx bxs-circle"></i>Entertainment</li>
+                                <li><i class="bx bxs-circle"></i>Investments</li>
+                                <li><i class="bx bxs-circle"></i>Foods & Groceries</li>
+                                <li><i class="bx bxs-circle"></i>Health & Beauty</li>
+                                <li><i class="bx bxs-circle"></i>Travelling</li> -->
+                            </ul>
+                            <canvas id="categories__chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="saving">
+                        <h3 class="small__title">Saving goals</h3>
+                        <div class="saving__items">
+                            <div class="saving__items--title">
+                                <p>MacBook Pro</p>
+                                <p>$ <span>1,650</span></p>
+                            </div>
+                            <div class="progress">
+                                <div class="progress__bar">
+                                    <div class="progress__bar--inner">
+                                        <span>50%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="saving__items">
+                            <div class="saving__items--title">
+                                <p>Bike</p>
+                                <p>$ <span>4,050</span></p>
+                            </div>
+                            <div class="progress">
+                                <div class="progress__bar">
+                                    <div class="progress__bar--inner">
+                                        <span>50%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="saving__items">
+                            <div class="saving__items--title">
+                                <p>Mustang Trip</p>
+                                <p>$ <span>1,150</span></p>
+                            </div>
+                            <div class="progress">
+                                <div class="progress__bar">
+                                    <div class="progress__bar--inner">
+                                        <span>50%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expenses__analytics">
+                    <div class="expenses">
+                        <div class="expenses__header">
+                            <h3 class="small__title">Recent expenses</h3>
+                            <button>See all <i class="bx bx-chevron-right"></i></button>
+                        </div>
+                        <table class="expenses__list">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Title</th>
+                                    <th>Method</th>
+                                    <th>Category</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>23 Jul 10:18</td>
+                                    <td>-$6</td>
+                                    <td>Have Dinner</td>
+                                    <td>E-sewa</td>
+                                    <td>Food</td>
+                                </tr>
+                                <tr>
+                                    <td>15 Jul 5:45</td>
+                                    <td>-$20</td>
+                                    <td>Buyed T-shirt</td>
+                                    <td>Phonepe</td>
+                                    <td>Clothing</td>
+                                </tr>
+                                <tr>
+                                    <td>12 Jul 1:24</td>
+                                    <td>-$2</td>
+                                    <td>Bus ticket</td>
+                                    <td>Cash</td>
+                                    <td>Travelling</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="money__flow">
+                        <canvas id="money__flow"></canvas>
+                    </div>
+                </div>
+            </div>
         </main>
+
+        <script src="./src/main.ts" type="module"></script>
     </body>
 </html>
