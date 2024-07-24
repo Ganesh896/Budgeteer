@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // base local url
-export const baseUrl = "http://localhost:8000/api/";
+export const baseUrl = "http://localhost:8000/api";
 
 //signin-signup
 const signinLinkEle = document.querySelector(".signin__link") as HTMLLinkElement;
@@ -37,9 +37,9 @@ const signinHandler = function (form: HTMLFormElement) {
     let data = Object.fromEntries(formData.entries());
 
     axios
-        .post(`${baseUrl}users/login`, data)
+        .post(`${baseUrl}/users/login`, data)
         .then(function (response) {
-            console.log("Login successful:", response.data);
+            localStorage.setItem("authToken", response.data.data.accessToken);
             window.location.href = "/dashboard";
         })
         .catch(function (error) {
@@ -48,7 +48,7 @@ const signinHandler = function (form: HTMLFormElement) {
         });
 };
 
-signinButtonEle.addEventListener("click", function (e) {
+signinButtonEle?.addEventListener("click", function (e) {
     e.preventDefault();
     signinHandler(signinFormEle);
 });
@@ -59,9 +59,8 @@ const signupHandler = function (form: HTMLFormElement) {
     let data = Object.fromEntries(formData.entries());
 
     axios
-        .post(`${baseUrl}users/register`, data)
+        .post(`${baseUrl}/users/register`, data)
         .then(function (response) {
-            console.log("Login successful:", response.data);
             signupErrorEle.innerText = "Register successfully!";
             signupErrorEle.style.color = "green";
             form.reset();
@@ -72,7 +71,19 @@ const signupHandler = function (form: HTMLFormElement) {
         });
 };
 
-signupButtonEle.addEventListener("click", function (e) {
+signupButtonEle?.addEventListener("click", function (e) {
     e.preventDefault();
     signupHandler(signupFormEle);
+});
+
+//login
+const logoutBtnEle = document.querySelector(".logout") as HTMLButtonElement;
+const logoutHandler = function () {
+    localStorage.removeItem("authToken");
+    window.location.href = "/";
+};
+
+logoutBtnEle?.addEventListener("click", function () {
+    console.log("logout");
+    logoutHandler();
 });

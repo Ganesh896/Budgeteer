@@ -50,7 +50,7 @@ const categoryItemsEle = document.querySelector(".categories") as HTMLUListEleme
 
     data.forEach((item, index) => {
         const li = document.createElement("li");
-        li.innerHTML = `<i class="bx bxs-circle"></i>${item.category}`;
+        li.innerHTML = `<i class="bx bxs-circle"></i><span>${item.category}</span>`;
         categoryItemsEle.appendChild(li);
     });
 })();

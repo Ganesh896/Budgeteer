@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="./src/assets/css/style.css" />
     </head>
     <body>
-        <main>
+        <main id="content">
             <aside class="sidebar">
                 <div class="container">
                     <button class="sidebar__toggle"><i class="bx bx-chevron-left"></i></button>
@@ -43,9 +43,7 @@
                             </li>
                         </ul>
                         <div class="sidebar__bottom">
-                            <div class="logout">
-                                <a href="#"><i class="bx bx-log-in"></i><span>Logout</span></a>
-                            </div>
+                            <button class="logout"><i class="bx bx-log-in"></i><span>Logout</span></button>
                             <div class="theme__button">
                                 <input type="checkbox" class="checkbox" id="checkbox" />
                                 <label for="checkbox" class="checkbox-label">
@@ -255,6 +253,8 @@
             </div>
         </main>
 
+        <script src="./src/assets/ts/routing.ts" type="module"></script>
         <script src="./src/main.ts" type="module"></script>
+        <script src="./src/assets/ts/login.ts" type="module"></script>
     </body>
 </html>

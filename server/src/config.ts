@@ -7,7 +7,7 @@ const config = {
 
     jwt: {
         secret: process.env.JWT_SECRET,
-        accessTokenExpiryMS: 5000,
+        accessTokenExpiryMS: 10000,
         refreshTokenExpiryMS: 50000,
     },
 

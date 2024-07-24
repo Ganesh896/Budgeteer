@@ -24,13 +24,13 @@ export async function register(user: User) {
 
 export async function login(user: Pick<User, "email" | "password">) {
     const existingUser = await UserModel.getUserByEmail(user.email);
-    console.log(existingUser);
+
     if (!existingUser) {
         throw new ApiError(HttpStatusCodes.UNAUTHORIZED, "Invalid email or password");
     }
 
     const isValidPassword = await bcrypt.compare(user.password, existingUser.password);
-    console.log(isValidPassword);
+
 
     if (!isValidPassword) {
         throw new ApiError(HttpStatusCodes.UNAUTHORIZED, "Invalid email or password");

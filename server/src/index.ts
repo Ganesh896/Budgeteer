@@ -23,7 +23,7 @@ app.use(helmet());
 
 app.use(limiter);
 
-app.use(cors({ credentials: true, origin: true }));
+app.use(cors({ credentials: true, origin: "*" }));
 
 // middleware to parse incoming JSON requests
 app.use(express.json());

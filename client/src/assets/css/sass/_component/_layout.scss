@@ -30,15 +30,17 @@
             }
         }
 
-        ul li a {
+        ul li a,
+        button {
             color: $primary;
         }
     }
 
     .dashboard {
         .categories {
-            ul {
-                color: $white !important;
+            ul,
+            span {
+                color: $white;
             }
         }
     }
@@ -171,7 +173,7 @@ main {
 
     &__bottom {
         margin-top: 60px;
-        .logout a {
+        .logout {
             text-decoration: none;
             @include flex-box(flex-start, center, 10px);
 

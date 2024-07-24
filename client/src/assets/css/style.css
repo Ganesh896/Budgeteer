@@ -116,6 +116,14 @@ input.form-control::placeholder {
   font-size: 14px;
 }
 
+button {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: none;
+  cursor: pointer;
+}
+
 .l__button {
   letter-spacing: 0.15rem;
   position: relative;
@@ -255,11 +263,13 @@ input.form-control::placeholder {
 .dark__theme .sidebar__bottom a {
   color: #8370fe;
 }
-.dark__theme .sidebar ul li a {
+.dark__theme .sidebar ul li a,
+.dark__theme .sidebar button {
   color: #8370fe;
 }
-.dark__theme .dashboard .categories ul {
-  color: #fff !important;
+.dark__theme .dashboard .categories ul,
+.dark__theme .dashboard .categories span {
+  color: #fff;
 }
 
 img {
@@ -383,14 +393,14 @@ main {
 .sidebar__bottom {
   margin-top: 60px;
 }
-.sidebar__bottom .logout a {
+.sidebar__bottom .logout {
   text-decoration: none;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
 }
-.sidebar__bottom .logout a i {
+.sidebar__bottom .logout i {
   font-size: 24px;
 }
 .sidebar__bottom .theme__button {

@@ -7,7 +7,7 @@ import { ApiError } from "../utils/ApiErrors";
 import config from "../config";
 import { User } from "../interface/user";
 
-export function authenticate(req: Request, res: Response) {
+export function authenticate(req: Request, res: Response, next: NextFunction) {
     const { authorization } = req.headers;
 
     if (!authorization) {
@@ -24,6 +24,7 @@ export function authenticate(req: Request, res: Response) {
         const payload: User = verify(token[1], config.jwt.secret!) as User;
 
         req.user = payload;
+        next();
     } catch (error) {
         throw new ApiError(HttpStatusCodes.UNAUTHORIZED, "Unauthorized!");
     }
