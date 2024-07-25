@@ -76,6 +76,16 @@
     main {
         flex-direction: column;
     }
+
+    .form__modal {
+        padding: 20px;
+    }
+
+    .login-register {
+        .form__group {
+            flex-direction: column;
+        }
+    }
     .sidebar {
         position: fixed;
         width: 100%;
@@ -83,7 +93,8 @@
         align-items: center;
         box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
 
-        &__header {
+        &__header,
+        &__toggle {
             display: none;
         }
 

@@ -63,9 +63,24 @@ main {
     background: $tertiary;
     width: 280px;
     height: 100vh;
-    padding: 40px 20px;
-    z-index: 1;
     transition: all 0.5s ease-in-out;
+    z-index: 1;
+
+    &__toggle {
+        position: absolute;
+        cursor: pointer;
+        right: -16px;
+        top: 80px;
+        @include hw(40px, 40px);
+        text-align: center;
+        outline: none;
+        border: none;
+        font-size: 24px;
+        border-radius: 50%;
+        background: $white;
+        transition: all 0.5s ease-in-out;
+        z-index: 2;
+    }
 
     &.close {
         @include flex-box(center, flex-start, 0);
@@ -76,7 +91,7 @@ main {
         }
 
         .sidebar__toggle {
-            right: -25px;
+            right: -16px;
         }
 
         .sidebar__header {
@@ -119,20 +134,8 @@ main {
 
     .container {
         position: relative;
-    }
-
-    &__toggle {
-        position: absolute;
-        cursor: pointer;
-        right: -34px;
-        top: 40px;
-        @include hw(40px, 40px);
-        text-align: center;
-        outline: none;
-        border: none;
-        font-size: 24px;
-        border-radius: 50%;
-        background: $white;
+        overflow: hidden;
+        padding: 40px 20px;
     }
 
     &__header {
@@ -242,6 +245,66 @@ main {
 
         &__profile {
             @include flex-box(flex-start, center, 10px);
+        }
+    }
+
+    .addexpense {
+        position: relative;
+        @include clearfix();
+        width: 100%;
+        &__btn {
+            @include flex-box(center, center, 5px);
+            background: $primary;
+            padding: 12px;
+            border-radius: 10px;
+            color: $white;
+            margin-bottom: 16px;
+            float: right;
+        }
+
+        .close__modal {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 32px;
+            cursor: pointer;
+        }
+
+        &__modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: $white;
+            z-index: 10;
+
+            &--header {
+                text-align: center;
+                margin-bottom: 16px;
+            }
+
+            .response__msg {
+                text-align: center;
+                margin-bottom: 16px;;
+            }
+
+            .form__group {
+                flex-direction: column;
+                align-items: flex-start;
+
+                label {
+                    font-weight: 600;
+                }
+            }
+            .form__groups {
+                flex-direction: row;
+
+                input,
+                select {
+                    margin-top: 8px;
+                }
+            }
         }
     }
 

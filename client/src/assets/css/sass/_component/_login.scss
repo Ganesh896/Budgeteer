@@ -1,5 +1,6 @@
 .login-register {
     height: 100vh;
+    padding: 0 20px;
     @include flex-box(center, center, 0);
 
     a {
@@ -13,39 +14,10 @@
         text-align: center;
         margin: 10px 0;
     }
-
-    .form__group {
-        margin-bottom: 16px;
-        @include flex-box(flex-start, center, 10px);
-
-        input {
-            padding: 18px;
-            outline: none;
-            border: 1px solid $grey;
-            width: 100%;
-            border-radius: 10px;
-            font-size: 16px;
-        }
-    }
-
-    button {
-        width: 100%;
-        padding: 20px;
-        outline: none;
-        background: $primary;
-        border: none;
-        @include typography(18px, 600);
-        color: $white;
-        border-radius: 10px;
-        cursor: pointer;
-    }
 }
 
 .signin {
-    width: 500px;
-    border: 1px solid $grey;
-    padding: 40px;
-    border-radius: 10px;
+    max-width: 500px;
 
     &__header {
         text-align: center;
@@ -66,10 +38,11 @@
 }
 
 .signup {
-    width: 600px;
-    border: 1px solid $grey;
-    padding: 40px;
-    border-radius: 10px;
+    // width: 100%;
+    // max-width: 600px;
+    // border: 1px solid $grey;
+    // padding: 40px;
+    // border-radius: 10px;
     display: none;
 
     &__header {

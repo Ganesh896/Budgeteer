@@ -13,8 +13,8 @@
     <body>
         <main id="content">
             <aside class="sidebar">
+                <button class="sidebar__toggle"><i class="bx bx-chevron-left"></i></button>
                 <div class="container">
-                    <button class="sidebar__toggle"><i class="bx bx-chevron-left"></i></button>
                     <div class="sidebar__header">
                         <div class="sidebar__header--logo">
                             <img src="./public/images/budgetter-logo.png" alt="logo" />
@@ -59,7 +59,7 @@
             <div class="dashboard">
                 <div class="header">
                     <div class="header__welcome">
-                        <h1 class="title">Welcome back, Ganesh!</h1>
+                        <h1 class="title" id="welcome__msg">Welcome back, Ganesh!</h1>
                         <p class="meta__text">It is the best time to manage you finances</p>
                     </div>
                     <div class="dashboard__header">
@@ -70,12 +70,57 @@
                     </div>
                     <div class="header__profile">
                         <div class="header__profile--img">
-                            <img src="./public/images/profile.jpg" alt="img" />
+                            <img src="./public/images/profile.jpg" id="profile__img" alt="img" />
                         </div>
                         <div class="header__right--details">
                             <h5 class="normal__text">Ganesh Saud</h5>
                             <p class="meta__text">ganesh@gmail.com</p>
                         </div>
+                    </div>
+                </div>
+
+                <div class="addexpense">
+                    <button class="addexpense__btn"><i class="bx bx-plus"></i> Add Expense</button>
+                    <div class="addexpense__modal form__modal">
+                        <div class="addexpense__modal--header">
+                            <h1 class="title">Add expense</h1>
+                        </div>
+                        <button class="close__modal"><i class="bx bx-x"></i></button>
+                        <form id="addexpense__form">
+                            <div class="form__group">
+                                <label for="title">Title</label>
+                                <input type="text" name="title" placeholder="Title" id="title" required />
+                            </div>
+                            <div class="form__group">
+                                <label for="category">Select category</label>
+                                <select name="categoryId" id="category" required>
+                                    <option value="">--- Select Category ---</option>
+                                    <!-- <option value="1">Food and Groceries</option>
+                                    <option value="2">Health & Beauty</option>
+                                    <option value="3">Health & Beauty</option> -->
+                                </select>
+                            </div>
+                            <div class="form__group form__groups">
+                                <div>
+                                    <label for="amount">Amount</label>
+                                    <input type="text" name="amount" placeholder="Amount" id="amount" required />
+                                </div>
+                                <div>
+                                    <label for="paymentmethod">Payment Method</label>
+                                    <select name="paymentMethod" id="paymentmethod" required>
+                                        <option value="E-Sewa">E-sewa</option>
+                                        <option value="Phonepe">Phonepe</option>
+                                        <option value="Cash">Cash</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form__group">
+                                <label for="description">Description</label>
+                                <textarea name="description" placeholder="description" id="description"></textarea>
+                            </div>
+                            <p class="response__msg">Added success fully!</p>
+                            <button type="submit" class="l__button l__button--primary">Submit</button>
+                        </form>
                     </div>
                 </div>
 
@@ -221,28 +266,14 @@
                                     <th>Category</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
+                            <tbody id="expenses__list">
+                                <!-- <tr>
                                     <td>23 Jul 10:18</td>
                                     <td>-$6</td>
                                     <td>Have Dinner</td>
                                     <td>E-sewa</td>
                                     <td>Food</td>
-                                </tr>
-                                <tr>
-                                    <td>15 Jul 5:45</td>
-                                    <td>-$20</td>
-                                    <td>Buyed T-shirt</td>
-                                    <td>Phonepe</td>
-                                    <td>Clothing</td>
-                                </tr>
-                                <tr>
-                                    <td>12 Jul 1:24</td>
-                                    <td>-$2</td>
-                                    <td>Bus ticket</td>
-                                    <td>Cash</td>
-                                    <td>Travelling</td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -251,10 +282,13 @@
                     </div>
                 </div>
             </div>
+            <div class="overlay"></div>
         </main>
 
         <script src="./src/assets/ts/routing.ts" type="module"></script>
-        <script src="./src/main.ts" type="module"></script>
-        <script src="./src/assets/ts/login.ts" type="module"></script>
+        <script src="./src/assets/ts/index.ts" type="module"></script>
+        <script src="./src/assets/ts/dashboard.ts" type="module"></script>
+        <script src="./src/assets/ts/index.ts" type="module"></script>
+        <!-- <script src="./src/assets/ts/expenses.ts" type="module"></script> -->
     </body>
 </html>

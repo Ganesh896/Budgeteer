@@ -61,3 +61,11 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
+@mixin clearfix() {
+    &::after {
+        display: block;
+        clear: both;
+        content: "";
+    }
+}

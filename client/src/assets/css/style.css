@@ -9,16 +9,9 @@ body {
   font-size: 16px;
   font-weight: 400;
   color: #000;
-  overflow-x: hidden;
   transition: all 0.5s ease;
   background-color: #fff;
   letter-spacing: 0.3px;
-}
-
-html,
-body {
-  overflow-x: hidden !important;
-  width: 100%;
 }
 
 h1,
@@ -71,29 +64,24 @@ p {
   color: #cfced2;
 }
 
-.m__tb {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-.m__tb--t {
-  margin-top: 50px;
-}
-.m__tb--b {
-  margin-bottom: 50px;
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 4;
 }
 
-.p {
-  padding: 50px;
+.show {
+  display: block !important;
 }
-.p__tb {
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-.p__tb--t {
-  padding-top: 50px;
-}
-.p__tb--b {
-  padding-bottom: 50px;
+
+body.overflowHidden {
+  overflow: hidden;
 }
 
 input {
@@ -116,6 +104,41 @@ input.form-control::placeholder {
   font-size: 14px;
 }
 
+.form__modal {
+  border: 2px solid #cfced2;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  padding: 40px;
+}
+
+.form__group {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+.form__group input,
+.form__group textarea,
+.form__group select {
+  padding: 16px;
+  outline: none;
+  border: 1px solid #82828c;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 16px;
+}
+.form__group input:focus,
+.form__group textarea:focus,
+.form__group select:focus {
+  border: 2px solid #8370fe;
+}
+.form__group textarea {
+  resize: none;
+  height: 100px;
+}
+
 button {
   border: none;
   outline: none;
@@ -125,40 +148,25 @@ button {
 }
 
 .l__button {
-  letter-spacing: 0.15rem;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  z-index: 1;
-  color: #fff !important;
-  text-transform: capitalize;
-  border: 2px solid #fff;
-  font-size: clamp(14px, 2vw, 16px);
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
   font-weight: 600;
-  padding: 10px 16px;
-  background-color: #fff;
-  border-radius: 6px;
-  display: inline-block;
-  transition: all 1s ease;
-  text-decoration: none;
-  text-align: center;
+  border-radius: 10px;
+  transition: all 0.5s ease-in-out;
 }
 .l__button--primary {
   color: #fff;
   background-color: #8370fe;
   border-color: #8370fe;
 }
-.l__button--secondary {
-  color: #fff;
-  background-color: #bfb7ff;
-  border-color: #bfb7ff;
-}
-.l__button--secondary:hover {
-  border-color: #8370fe;
+.l__button--primary:hover {
+  opacity: 0.9;
 }
 
 .login-register {
   height: 100vh;
+  padding: 0 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -174,39 +182,9 @@ button {
   text-align: center;
   margin: 10px 0;
 }
-.login-register .form__group {
-  margin-bottom: 16px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
-}
-.login-register .form__group input {
-  padding: 18px;
-  outline: none;
-  border: 1px solid #82828c;
-  width: 100%;
-  border-radius: 10px;
-  font-size: 16px;
-}
-.login-register button {
-  width: 100%;
-  padding: 20px;
-  outline: none;
-  background: #8370fe;
-  border: none;
-  font-size: 18px;
-  font-weight: 600;
-  color: #fff;
-  border-radius: 10px;
-  cursor: pointer;
-}
 
 .signin {
-  width: 500px;
-  border: 1px solid #82828c;
-  padding: 40px;
-  border-radius: 10px;
+  max-width: 500px;
 }
 .signin__header {
   text-align: center;
@@ -222,10 +200,6 @@ button {
 }
 
 .signup {
-  width: 600px;
-  border: 1px solid #82828c;
-  padding: 40px;
-  border-radius: 10px;
   display: none;
 }
 .signup__header {
@@ -290,9 +264,25 @@ main {
   background: #f6f4ff;
   width: 280px;
   height: 100vh;
-  padding: 40px 20px;
-  z-index: 1;
   transition: all 0.5s ease-in-out;
+  z-index: 1;
+}
+.sidebar__toggle {
+  position: absolute;
+  cursor: pointer;
+  right: -16px;
+  top: 80px;
+  height: 40px;
+  width: 40px;
+  overflow: hidden;
+  text-align: center;
+  outline: none;
+  border: none;
+  font-size: 24px;
+  border-radius: 50%;
+  background: #fff;
+  transition: all 0.5s ease-in-out;
+  z-index: 2;
 }
 .sidebar.close {
   display: flex;
@@ -305,7 +295,7 @@ main {
   display: none;
 }
 .sidebar.close .sidebar__toggle {
-  right: -25px;
+  right: -16px;
 }
 .sidebar.close .sidebar__header {
   gap: 0;
@@ -340,21 +330,8 @@ main {
 }
 .sidebar .container {
   position: relative;
-}
-.sidebar__toggle {
-  position: absolute;
-  cursor: pointer;
-  right: -34px;
-  top: 40px;
-  height: 40px;
-  width: 40px;
   overflow: hidden;
-  text-align: center;
-  outline: none;
-  border: none;
-  font-size: 24px;
-  border-radius: 50%;
-  background: #fff;
+  padding: 40px 20px;
 }
 .sidebar__header {
   display: flex;
@@ -464,6 +441,65 @@ main {
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
+}
+.dashboard .addexpense {
+  position: relative;
+  width: 100%;
+}
+.dashboard .addexpense::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.dashboard .addexpense__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: #8370fe;
+  padding: 12px;
+  border-radius: 10px;
+  color: #fff;
+  margin-bottom: 16px;
+  float: right;
+}
+.dashboard .addexpense .close__modal {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 32px;
+  cursor: pointer;
+}
+.dashboard .addexpense__modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  z-index: 10;
+}
+.dashboard .addexpense__modal--header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.dashboard .addexpense__modal .response__msg {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.dashboard .addexpense__modal .form__group {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.dashboard .addexpense__modal .form__group label {
+  font-weight: 600;
+}
+.dashboard .addexpense__modal .form__groups {
+  flex-direction: row;
+}
+.dashboard .addexpense__modal .form__groups input,
+.dashboard .addexpense__modal .form__groups select {
+  margin-top: 8px;
 }
 .dashboard__header {
   display: flex;
@@ -726,6 +762,12 @@ main {
   main {
     flex-direction: column;
   }
+  .form__modal {
+    padding: 20px;
+  }
+  .login-register .form__group {
+    flex-direction: column;
+  }
   .sidebar {
     position: fixed;
     width: 100%;
@@ -733,7 +775,7 @@ main {
     align-items: center;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
   }
-  .sidebar__header {
+  .sidebar__header, .sidebar__toggle {
     display: none;
   }
   .sidebar__content {

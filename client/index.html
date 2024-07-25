@@ -9,7 +9,7 @@
     </head>
     <body>
         <main class="login-register" id="content">
-            <div class="signin">
+            <div class="signin form__modal">
                 <div class="signin__header">
                     <h1 class="title">Sign in</h1>
                 </div>
@@ -21,14 +21,14 @@
                         <input type="password" name="password" placeholder="password" />
                     </div>
                     <p class="signin__error"></p>
-                    <button type="submit" class="btn__signin">Signin</button>
+                    <button type="submit" class="l__button l__button--primary btn__signin">Signin</button>
                 </form>
                 <div class="signin__footer">
                     <p>Don't have account? <a href="#" class="signup__link">Sign up</a></p>
                 </div>
             </div>
 
-            <div class="signup">
+            <div class="signup form__modal">
                 <div class="signup__header">
                     <h1 class="title">Signup</h1>
                 </div>
@@ -52,7 +52,7 @@
                         <input type="text" name="address" placeholder="Address" />
                     </div>
                     <p class="signup__error"></p>
-                    <button type="submit" class="btn__signup">Signup</button>
+                    <button type="submit" class="l__button l__button--primary btn__signup">Signup</button>
                 </form>
                 <div class="signup__footer">
                     <p>Already registered? <a href="#" class="signin__link">Sign in</a></p>
@@ -60,7 +60,6 @@
             </div>
         </main>
 
-        <script src="./src/assets/ts/routing.ts" type="module"></script>
-        <script src="./src/assets/ts/login.ts" type="module"></script>
+        <script src="./src/assets/ts/auth.ts" type="module"></script>
     </body>
 </html>
