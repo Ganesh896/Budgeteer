@@ -286,12 +286,22 @@ main {
 
             .response__msg {
                 text-align: center;
-                margin-bottom: 16px;;
+                margin-bottom: 16px;
             }
 
             .form__group {
                 flex-direction: column;
                 align-items: flex-start;
+
+                &--category {
+                    width: 100%;
+                    @include flex-box(center, center, 16px);
+
+                    button {
+                        min-width: fit-content;
+                        color: $green;
+                    }
+                }
 
                 label {
                     font-weight: 600;

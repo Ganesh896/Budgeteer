@@ -93,12 +93,16 @@
                             </div>
                             <div class="form__group">
                                 <label for="category">Select category</label>
-                                <select name="categoryId" id="category" required>
-                                    <option value="">--- Select Category ---</option>
-                                    <!-- <option value="1">Food and Groceries</option>
-                                    <option value="2">Health & Beauty</option>
-                                    <option value="3">Health & Beauty</option> -->
-                                </select>
+                                <div class="form__group--category">
+                                    <select name="categoryId" id="category">
+                                        <option value="">--- Select Category ---</option>
+                                        <!-- <option value="1">Food and Groceries</option>
+                                        <option value="2">Health & Beauty</option>
+                                        <option value="3">Health & Beauty</option> -->
+                                    </select>
+                                    <input type="text" placeholder="Add category" name="categoryName" class="addcategory__input hide" />
+                                    <button type="button" class="addcategory__btn">+ Add Category</button>
+                                </div>
                             </div>
                             <div class="form__group form__groups">
                                 <div>
@@ -118,7 +122,7 @@
                                 <label for="description">Description</label>
                                 <textarea name="description" placeholder="description" id="description"></textarea>
                             </div>
-                            <p class="response__msg">Added success fully!</p>
+                            <p class="response__msg"></p>
                             <button type="submit" class="l__button l__button--primary">Submit</button>
                         </form>
                     </div>

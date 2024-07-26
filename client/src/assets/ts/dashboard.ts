@@ -42,6 +42,21 @@ closeModal.addEventListener("click", () => {
     htmlBodyEle.classList.remove("overflowHidden");
 });
 
+// add category
+const addCategoryBtn = document.querySelector(".addcategory__btn") as HTMLButtonElement;
+const addCategoryInput = document.querySelector(".addcategory__input") as HTMLInputElement;
+const selectCategoryInput = document.getElementById("category") as HTMLSelectElement;
+
+addCategoryBtn.addEventListener("click", function () {
+    addCategoryInput.classList.toggle("hide");
+    selectCategoryInput.classList.toggle("hide");
+    if (addCategoryBtn.classList.contains("hide")) {
+        addCategoryBtn.textContent = "+ Add Category";
+    } else {
+        addCategoryBtn.textContent = "Select Category";
+    }
+});
+
 // categories chart
 const categoryChartEle = document.getElementById("categories__chart") as HTMLCanvasElement;
 const categoryItemsEle = document.querySelector(".categories") as HTMLUListElement;

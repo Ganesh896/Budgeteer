@@ -80,6 +80,10 @@ p {
   display: block !important;
 }
 
+.hide {
+  display: none;
+}
+
 body.overflowHidden {
   overflow: hidden;
 }
@@ -490,6 +494,17 @@ main {
 .dashboard .addexpense__modal .form__group {
   flex-direction: column;
   align-items: flex-start;
+}
+.dashboard .addexpense__modal .form__group--category {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.dashboard .addexpense__modal .form__group--category button {
+  min-width: fit-content;
+  color: #6faa75;
 }
 .dashboard .addexpense__modal .form__group label {
   font-weight: 600;

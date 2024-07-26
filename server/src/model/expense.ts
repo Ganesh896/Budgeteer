@@ -69,4 +69,9 @@ export class ExpenseModel extends BaseModel {
     static async getCategory(userId: string) {
         return this.queryBuilder().select("id", "categoryName").from("categories").where({ userId }).orWhereNull("userId");
     }
+
+    // get expense category
+    static async addCategory(userId: string, id:number, categoryName:string) {
+        return this.queryBuilder().insert({id, userId, categoryName}).table("categories");
+    }
 }
