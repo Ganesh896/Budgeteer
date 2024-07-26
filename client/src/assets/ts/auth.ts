@@ -77,6 +77,6 @@ signupFormEle.addEventListener("submit", (event) => {
 //                 });
 //         }
 //     } else {
-//         window.location.href = "/404";
+//         window.location.href = "/pages/404";
 //     }
 // });

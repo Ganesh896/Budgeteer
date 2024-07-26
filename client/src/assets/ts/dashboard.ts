@@ -1,17 +1,5 @@
 import Chart from "chart.js/auto";
 import { renderCategory } from "./expenses";
-const sidebarItemsEle = document.querySelectorAll(".sidebar__item");
-
-// setting active sidebar item
-sidebarItemsEle.forEach((item) => {
-    item.addEventListener("click", () => {
-        const current = document.getElementsByClassName("active");
-        if (current.length > 0) {
-            current[0].className = current[0].className.replace(" active", "");
-        }
-        item.className += " active";
-    });
-});
 
 const sidebarToggleEle = document.querySelector(".sidebar__toggle") as HTMLButtonElement;
 const sidebarEle = document.querySelector(".sidebar") as HTMLDivElement;
@@ -29,14 +17,14 @@ const overlay = document.querySelector(".overlay") as HTMLDivElement;
 const addexpenseModal = document.querySelector(".addexpense__modal") as HTMLDivElement;
 const htmlBodyEle = document.querySelector("body") as HTMLBodyElement;
 
-openModal.addEventListener("click", () => {
+openModal?.addEventListener("click", () => {
     overlay.classList.add("show");
     addexpenseModal.classList.add("show");
     htmlBodyEle.classList.add("overflowHidden");
     renderCategory();
 });
 
-closeModal.addEventListener("click", () => {
+closeModal?.addEventListener("click", () => {
     overlay.classList.remove("show");
     addexpenseModal.classList.remove("show");
     htmlBodyEle.classList.remove("overflowHidden");
@@ -47,7 +35,7 @@ const addCategoryBtn = document.querySelector(".addcategory__btn") as HTMLButton
 const addCategoryInput = document.querySelector(".addcategory__input") as HTMLInputElement;
 const selectCategoryInput = document.getElementById("category") as HTMLSelectElement;
 
-addCategoryBtn.addEventListener("click", function () {
+addCategoryBtn?.addEventListener("click", function () {
     addCategoryInput.classList.toggle("hide");
     selectCategoryInput.classList.toggle("hide");
     if (addCategoryBtn.classList.contains("hide")) {

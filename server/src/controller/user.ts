@@ -33,7 +33,7 @@ export const getUserByEmail = asyncHandler(async (req: Request, res: Response) =
 export const updateUser = asyncHandler(async (req: Request, res: Response) => {
     const { id } = req.user!;
     const user = req.body;
-    const data = await userService.updateUser({...user, id});
+    const data = await userService.updateUser({ ...user, id });
     res.status(HttpStatusCodes.OK).json(new ApiResponse(HttpStatusCodes.OK, data));
 });
 

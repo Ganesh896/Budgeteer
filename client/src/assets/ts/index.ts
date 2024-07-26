@@ -1,26 +1,31 @@
-// import { updateExpenses } from "./expenses";
-// import { updateBudget } from "./budget";
-// import { updateSavingGoals } from "./savingGoals";
-// import { updateUserProfile } from "./userProfile";
-// import { initializeCharts } from "./charts";
-
+import axios from "axios";
+import { baseUrl } from "../../main";
 import { addExpense, renderUserExpenses } from "./expenses";
-import { updateUserProfile } from "./userProfile";
 
-// export function initializeDashboard() {
-//     updateUserProfile();
-//     updateExpenses();
-//     updateBudget();
-//     updateSavingGoals();
-//     initializeCharts();
-// }
+export const getUserDetails = async () => {
+    if (localStorage.getItem("authToken")) {
+        await axios
+            .get(`${baseUrl}user/user-details`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+                },
+            })
+            .then(function (response) {
+                // console.log(response.data.data);
+                localStorage.setItem("userDetails", JSON.stringify(response.data.data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+};
 
 document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem("authToken");
+    getUserDetails();
     if (token) {
-        const userDetails = JSON.parse(localStorage.getItem("userDetails") || "{}");
+        // const userDetails = JSON.parse(localStorage.getItem("userDetails") || "{}");
         addExpense();
-        updateUserProfile(userDetails);
         renderUserExpenses();
     }
 });

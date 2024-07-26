@@ -23,7 +23,17 @@ app.use(helmet());
 
 app.use(limiter);
 
-app.use(cors({ credentials: true, origin: "*" }));
+const corsOptions = {
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+// Handle preflight requests
+app.options("*", cors(corsOptions));
 
 // middleware to parse incoming JSON requests
 app.use(express.json());

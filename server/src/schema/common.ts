@@ -3,10 +3,14 @@ import Joi from "joi";
 export const querySchema = Joi.object({
     q: Joi.string().optional(),
 
-    page: Joi.number().min(1).optional().messages({
-        "number.base": "Page must be a number",
-        "number.min": "Size must be greater than or equal to 1",
-    }),
+    page: Joi.number()
+        .min(1)
+        .optional()
+        .messages({
+            "number.base": "Page must be a number",
+            "number.min": "Size must be greater than or equal to 1",
+        })
+        .default(1),
 
     size: Joi.number()
         .min(1)

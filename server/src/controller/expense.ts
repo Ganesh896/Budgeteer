@@ -5,7 +5,6 @@ import HttpStatusCodes from "http-status-codes";
 import * as expenseService from "../service/expense";
 import { asyncHandler } from "../utils/asyncHandler";
 import { ApiResponse } from "../utils/response";
-import { GetQuery } from "../interface/query";
 
 // add expense
 export const addExpense = asyncHandler(async (req: Request, res: Response) => {
@@ -29,7 +28,7 @@ export const updateExpense = asyncHandler(async (req: Request, res: Response) =>
 export async function getExpenses(req: Request, res: Response) {
     const { query } = req;
     const { id } = req.user!;
-    console.log(id);
+
     const data = await expenseService.getExpenses(id, query);
 
     res.status(HttpStatusCodes.OK).json(new ApiResponse(HttpStatusCodes.OK, data));
