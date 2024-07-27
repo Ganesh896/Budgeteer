@@ -40,6 +40,9 @@
                                 <a href="analytics.html"><i class="bx bx-money"></i> <span>Analytics</span></a>
                             </li>
                             <li class="sidebar__item">
+                                <a href="group.html"><i class="bx bx-group"></i> <span>Groups</span></a>
+                            </li>
+                            <li class="sidebar__item">
                                 <a href="/settings"><i class="bx bx-cog"></i> <span>Settings</span></a>
                             </li>
                         </ul>
@@ -73,11 +76,34 @@
                         <!-- rendering user profile here -->
                     </div>
                 </div>
-                <div class="budget">
-                    <h3 class="small__title">Budget</h3>
-                    <div class="budget__content">
-                        <!-- <ul class="categories"></ul> -->
-                        <canvas id="categories__chart"></canvas>
+                <div class="amount__cards">
+                    <div class="budget__card">
+                        <div class="setbudget">
+                            <input type="number" placeholder="Enter amount" />
+                            <button class="l__button l__button--primary">+ Set Budget</button>
+                        </div>
+                        <div class="amount__card">
+                            <div class="amount__card--title">
+                                <h3 class="small__title">Budget</h3>
+                            </div>
+                            <div class="amount__card--body">
+                                <h2 class="subtitle">$ <span>15,600</span></h2>
+                                <div class="comparision">
+                                    <div class="difference">
+                                        <i class="bx bx-up-arrow-alt"></i>
+                                        <span>12.1%</span>
+                                    </div>
+                                    <p class="meta__text">vs last month</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="budget__chart">
+                        <h3 class="small__title">Budget</h3>
+                        <div class="budget__content">
+                            <!-- <ul class="categories"></ul> -->
+                            <canvas id="categories__chart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>

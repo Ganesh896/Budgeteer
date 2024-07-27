@@ -527,6 +527,30 @@ main {
                 }
             }
         }
+
+        &__card {
+            .setbudget {
+                margin-bottom: 16px;
+                button {
+                    width: fit-content;
+                    font-size: 16px;
+                    padding: 16px;
+                }
+
+                input {
+                    padding: 16px;
+                    font-size: 16px;
+                    border: 2px solid $grey-light;
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+
+    .budget__chart {
+        border: 2px solid $grey-light;
+        border-radius: 10px;
+        padding: 20px;
     }
 
     // monetflow and expenses
@@ -625,6 +649,55 @@ main {
                     border-radius: 5px;
                     color: $white;
                 }
+            }
+        }
+
+        &__group {
+            display: flex;
+            gap: 16px;
+
+            .groups {
+                flex-basis: 30%;
+
+                &__header {
+                    margin-bottom: 16px;
+
+                    input {
+                        padding: 16px;
+                        border: 2px solid $grey-light;
+                        border-radius: 5px;
+                        outline: none;
+                        font-size: 16px;
+                    }
+
+                    button {
+                        padding: 16px;
+                        width: fit-content;
+                        font-size: 14px;
+                    }
+                }
+                &__card {
+                    border: 2px solid $grey-light;
+                    border-radius: 10px;
+                    padding: 20px;
+
+                    &--name {
+                        @include flex-box(flex-start, center, 12px);
+                        background: $tertiary;
+                        padding: 16px;
+                        border-radius: 8px;
+                        width: 100%;
+                        margin-bottom: 16px;
+
+                        i {
+                            font-size: 28px;
+                        }
+                    }
+                }
+            }
+
+            .expenses {
+                flex-basis: 70%;
             }
         }
     }

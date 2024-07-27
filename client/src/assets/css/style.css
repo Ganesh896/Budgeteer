@@ -729,6 +729,25 @@ main {
 .dashboard .budget .categories li i {
   font-size: 12px;
 }
+.dashboard .budget__card .setbudget {
+  margin-bottom: 16px;
+}
+.dashboard .budget__card .setbudget button {
+  width: fit-content;
+  font-size: 16px;
+  padding: 16px;
+}
+.dashboard .budget__card .setbudget input {
+  padding: 16px;
+  font-size: 16px;
+  border: 2px solid #cfced2;
+  border-radius: 10px;
+}
+.dashboard .budget__chart {
+  border: 2px solid #cfced2;
+  border-radius: 10px;
+  padding: 20px;
+}
 .dashboard .expenses__analytics {
   margin-top: 16px;
 }
@@ -827,6 +846,50 @@ main {
   padding: 8px;
   border-radius: 5px;
   color: #fff;
+}
+.dashboard .expenses__group {
+  display: flex;
+  gap: 16px;
+}
+.dashboard .expenses__group .groups {
+  flex-basis: 30%;
+}
+.dashboard .expenses__group .groups__header {
+  margin-bottom: 16px;
+}
+.dashboard .expenses__group .groups__header input {
+  padding: 16px;
+  border: 2px solid #cfced2;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+}
+.dashboard .expenses__group .groups__header button {
+  padding: 16px;
+  width: fit-content;
+  font-size: 14px;
+}
+.dashboard .expenses__group .groups__card {
+  border: 2px solid #cfced2;
+  border-radius: 10px;
+  padding: 20px;
+}
+.dashboard .expenses__group .groups__card--name {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  background: #f6f4ff;
+  padding: 16px;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.dashboard .expenses__group .groups__card--name i {
+  font-size: 28px;
+}
+.dashboard .expenses__group .expenses {
+  flex-basis: 70%;
 }
 .dashboard .money__flow {
   border: 2px solid #cfced2;
