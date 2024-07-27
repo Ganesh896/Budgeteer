@@ -61,7 +61,7 @@ p {
 .meta__text {
   font-size: 14px;
   font-weight: 500;
-  color: #cfced2;
+  color: #82828c;
 }
 
 .overlay {
@@ -257,6 +257,11 @@ img {
   border-radius: 50%;
 }
 
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 main {
   display: flex;
 }
@@ -300,6 +305,9 @@ main {
 }
 .sidebar.close .sidebar__toggle {
   right: -16px;
+}
+.sidebar.close .sidebar__toggle i {
+  transform: rotate(180deg);
 }
 .sidebar.close .sidebar__header {
   gap: 0;
@@ -446,6 +454,9 @@ main {
   align-items: center;
   gap: 10px;
 }
+.dashboard .header__profile img {
+  border: 2.5px solid #8370fe;
+}
 .dashboard .addexpense {
   position: relative;
   width: 100%;
@@ -569,76 +580,108 @@ main {
 }
 .dashboard .savingbudgets {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
   gap: 16px;
   margin-top: 16px;
 }
-.dashboard .savingbudgets .budget {
-  flex-basis: 100%;
-  border: 2px solid #cfced2;
-  padding: 20px;
-  border-radius: 20px;
+.dashboard .addgoal {
+  position: relative;
+  width: 100%;
 }
-.dashboard .savingbudgets .budget__content {
+.dashboard .addgoal::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.dashboard .addgoal__btn {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 0;
+  gap: 5px;
+  background: #8370fe;
+  padding: 12px;
+  border-radius: 10px;
+  color: #fff;
+  margin-bottom: 16px;
+  float: right;
 }
-.dashboard .savingbudgets .budget__content canvas {
-  height: 250px !important;
-  width: 100% !important;
-  max-width: 300px;
+.dashboard .addgoal .close__modal {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 32px;
+  cursor: pointer;
 }
-.dashboard .savingbudgets .budget .categories {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  margin-top: 20px;
+.dashboard .addgoal__modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  z-index: 10;
 }
-.dashboard .savingbudgets .budget .categories li {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: #46454b;
-}
-.dashboard .savingbudgets .budget .categories li i {
-  font-size: 12px;
-}
-.dashboard .savingbudgets .saving {
-  flex-basis: 100%;
-  border: 2px solid #cfced2;
-  border-radius: 20px;
-  padding: 20px;
-}
-.dashboard .savingbudgets .saving h2 {
+.dashboard .addgoal__modal--header {
+  text-align: center;
   margin-bottom: 16px;
 }
-.dashboard .savingbudgets .saving__items {
+.dashboard .addgoal__modal .response__msg {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.dashboard .addgoal__modal .form__group {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.dashboard .addgoal__modal .form__group--category {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.dashboard .addgoal__modal .form__group--category button {
+  min-width: fit-content;
+  color: #6faa75;
+}
+.dashboard .addgoal__modal .form__group label {
+  font-weight: 600;
+}
+.dashboard .addgoal__modal .form__groups {
+  flex-direction: row;
+}
+.dashboard .addgoal__modal .form__groups input,
+.dashboard .addgoal__modal .form__groups select {
+  margin-top: 8px;
+}
+.dashboard .saving {
+  flex-basis: 100%;
+  border: 2px solid #cfced2;
+  border-radius: 20px;
+  padding: 20px;
+}
+.dashboard .saving h2 {
+  margin-bottom: 16px;
+}
+.dashboard .saving__items {
   margin-top: 16px;
 }
-.dashboard .savingbudgets .saving__items--title {
+.dashboard .saving__items--title {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 0;
 }
-.dashboard .savingbudgets .saving__items .progress {
+.dashboard .saving__items .progress {
   margin-top: 10px;
 }
-.dashboard .savingbudgets .saving__items .progress__bar {
+.dashboard .saving__items .progress__bar {
   position: relative;
   width: 100%;
   height: 16px;
   border-radius: 16px;
   background: #ddd;
 }
-.dashboard .savingbudgets .saving__items .progress__bar--inner {
+.dashboard .saving__items .progress__bar--inner {
   position: absolute;
   content: "";
   width: 50%;
@@ -650,23 +693,78 @@ main {
   color: #fff;
   line-height: 16px;
 }
+.dashboard .budget {
+  flex-basis: 100%;
+  border: 2px solid #cfced2;
+  padding: 20px;
+  border-radius: 20px;
+}
+.dashboard .budget__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+.dashboard .budget__content canvas {
+  height: 100% !important;
+  width: 100%;
+  max-width: 300px;
+}
+.dashboard .budget .categories {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin-top: 20px;
+}
+.dashboard .budget .categories li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #46454b;
+}
+.dashboard .budget .categories li i {
+  font-size: 12px;
+}
 .dashboard .expenses__analytics {
   margin-top: 16px;
 }
-.dashboard .expenses__analytics .expenses {
+.dashboard .expenses {
   border: 2px solid #cfced2;
   border-radius: 20px;
   padding: 20px;
   overflow: auto;
 }
-.dashboard .expenses__analytics .expenses__header {
+.dashboard .expenses__search {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 0;
+  border-radius: 30px;
+  background: #f6f4ff;
+  font-size: 16px;
+  width: 100%;
+  max-width: 400px;
+  padding: 0 12px;
+}
+.dashboard .expenses__search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 12px 0;
+}
+.dashboard .expenses__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
   margin-bottom: 16px;
 }
-.dashboard .expenses__analytics .expenses__header button {
+.dashboard .expenses__header button {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -677,15 +775,15 @@ main {
   padding: 8px 12px;
   border-radius: 30px;
 }
-.dashboard .expenses__analytics .expenses__list {
+.dashboard .expenses__list {
   border-collapse: collapse;
   width: 100%;
   border-radius: 8px;
 }
-.dashboard .expenses__analytics .expenses__list thead {
+.dashboard .expenses__list thead {
   background: #f6f4ff;
 }
-.dashboard .expenses__analytics .expenses__list th {
+.dashboard .expenses__list th {
   padding: 16px;
   font-size: 14px;
   text-align: center;
@@ -694,29 +792,51 @@ main {
   text-transform: uppercase;
   font-weight: 500;
 }
-.dashboard .expenses__analytics .expenses__list th:first-child {
+.dashboard .expenses__list th:first-child {
   border-radius: 30px 0 0 30px;
 }
-.dashboard .expenses__analytics .expenses__list th:last-child {
+.dashboard .expenses__list th:last-child {
   border-radius: 0 30px 30px 0;
 }
-.dashboard .expenses__analytics .expenses__list tr {
+.dashboard .expenses__list tr {
   border-bottom: 1px solid #eee;
 }
-.dashboard .expenses__analytics .expenses__list tr:last-child {
+.dashboard .expenses__list tr:last-child {
   border-bottom: none;
 }
-.dashboard .expenses__analytics .expenses__list td {
+.dashboard .expenses__list td {
   padding: 20px 16px;
 }
-.dashboard .expenses__analytics .money__flow {
+.dashboard .expenses__pagination {
+  margin-top: 16px;
+}
+.dashboard .expenses__pagination::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.dashboard .expenses__pagination--buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  float: right;
+}
+.dashboard .expenses__pagination--buttons button {
+  background: #8370fe;
+  padding: 8px;
+  border-radius: 5px;
+  color: #fff;
+}
+.dashboard .money__flow {
   border: 2px solid #cfced2;
   border-radius: 20px;
   padding: 20px;
   margin-top: 16px;
-  height: 400px;
+  max-height: 350px;
+  height: 100%;
 }
-.dashboard .expenses__analytics .money__flow #money__flow {
+.dashboard .money__flow #money__flow {
   width: 100% !important;
 }
 
@@ -847,6 +967,7 @@ main {
     gap: 0;
     width: 80px;
   }
+  .sidebar__toggle,
   .sidebar span {
     display: none;
   }
@@ -901,7 +1022,7 @@ main {
     align-items: center;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
   }
-  .sidebar__header, .sidebar__toggle {
+  .sidebar__header {
     display: none;
   }
   .sidebar__content {

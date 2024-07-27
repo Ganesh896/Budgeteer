@@ -1,5 +1,5 @@
 import Chart from "chart.js/auto";
-import { renderCategory } from "./expenses";
+import { renderCategory } from "./expenses/expenses";
 
 const sidebarToggleEle = document.querySelector(".sidebar__toggle") as HTMLButtonElement;
 const sidebarEle = document.querySelector(".sidebar") as HTMLDivElement;
@@ -47,7 +47,7 @@ addCategoryBtn?.addEventListener("click", function () {
 
 // categories chart
 const categoryChartEle = document.getElementById("categories__chart") as HTMLCanvasElement;
-const categoryItemsEle = document.querySelector(".categories") as HTMLUListElement;
+// const categoryItemsEle = document.querySelector(".categories") as HTMLUListElement;
 
 (async function () {
     interface CategoryData {
@@ -66,21 +66,33 @@ const categoryItemsEle = document.querySelector(".categories") as HTMLUListEleme
 
     new Chart(categoryChartEle, {
         type: "doughnut",
+
         data: {
+            labels: data.map((category) => category.category),
             datasets: [
                 {
-                    label: "Budget",
-                    data: data.map((row) => row.amount),
+                    label: "My First Dataset",
+                    data: data.map((amount) => amount.amount),
+                    backgroundColor: ["#8370fe", "#bfb7ff", "#f6f4ff", "#46454b", "#82828c"],
+                    hoverOffset: 4,
                 },
             ],
         },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: "bottom",
+                },
+            },
+        },
     });
 
-    data.forEach((item) => {
-        const li = document.createElement("li");
-        li.innerHTML = `<i class="bx bxs-circle"></i><span>${item.category}</span>`;
-        categoryItemsEle.appendChild(li);
-    });
+    // data.forEach((item) => {
+    //     const li = document.createElement("li");
+    //     li.innerHTML = `<i class="bx bxs-circle"></i><span>${item.category}</span>`;
+    //     categoryItemsEle.appendChild(li);
+    // });
 })();
 
 // money flow chart
@@ -108,13 +120,15 @@ const moneyFlowChartEle = document.getElementById("money__flow") as HTMLCanvasEl
             datasets: [
                 {
                     label: "Current month",
-                    barThickness: 20,
+                    backgroundColor: "#8370fe",
+                    barThickness: 15,
                     borderRadius: 30,
                     data: data.map((row) => row.amount),
                 },
                 {
                     label: "Previous month",
-                    barThickness: 20,
+                    backgroundColor: "#bfb7ff",
+                    barThickness: 15,
                     borderRadius: 30,
                     data: data.map((row) => row.amount - 5),
                 },

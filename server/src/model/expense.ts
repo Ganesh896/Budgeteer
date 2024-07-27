@@ -51,11 +51,11 @@ export class ExpenseModel extends BaseModel {
     static async count(userId: string, filter: GetQuery) {
         const { q } = filter;
 
-        const query = await this.queryBuilder().count("*").table("expenses").limit(filter.size!).first();
+        const query = await this.queryBuilder().count("*").table("expenses").where({ userId }).limit(filter.size!).first();
 
-        if (q) {
-            query.where({ userId });
-        }
+        // if (q) {
+        //     query.where({ userId });
+        // }
 
         return query;
     }
@@ -71,7 +71,7 @@ export class ExpenseModel extends BaseModel {
     }
 
     // get expense category
-    static async addCategory(userId: string, id:number, categoryName:string) {
-        return this.queryBuilder().insert({id, userId, categoryName}).table("categories");
+    static async addCategory(userId: string, id: number, categoryName: string) {
+        return this.queryBuilder().insert({ id, userId, categoryName }).table("categories");
     }
 }

@@ -21,6 +21,7 @@
         @include flex-box(center, flex-start, 0);
         width: 80px;
 
+        &__toggle,
         span {
             display: none;
         }
@@ -93,8 +94,7 @@
         align-items: center;
         box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
 
-        &__header,
-        &__toggle {
+        &__header {
             display: none;
         }
 

@@ -25,15 +25,10 @@ app.use(limiter);
 
 const corsOptions = {
     origin: "http://localhost:5173",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
+    credentials: true, //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
 };
-
 app.use(cors(corsOptions));
-
-// Handle preflight requests
-app.options("*", cors(corsOptions));
 
 // middleware to parse incoming JSON requests
 app.use(express.json());

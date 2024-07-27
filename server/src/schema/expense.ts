@@ -5,7 +5,7 @@ const title = Joi.string().required().messages({
     "any.required": "Title name is required!",
 });
 
-const description = Joi.string().allow('').optional().messages({
+const description = Joi.string().allow("").optional().messages({
     "string.empty": "Description cannot be an empty string!",
 });
 

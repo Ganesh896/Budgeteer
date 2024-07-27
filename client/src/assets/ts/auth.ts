@@ -19,8 +19,7 @@ signinFormEle?.addEventListener("submit", (event) => {
         .post(`${baseUrl}user/login`, data)
         .then(function (response) {
             localStorage.setItem("authToken", response.data.data.accessToken);
-            localStorage.setItem("userDetails", JSON.stringify(response.data.data.userDetails));
-            window.location.href = "/dashboard";
+            window.location.href = "/pages/dashboard";
         })
         .catch(function (error) {
             console.error(error.response.data);
@@ -54,9 +53,9 @@ signupFormEle.addEventListener("submit", (event) => {
 //     if (currentPath === "/") {
 //         if (token) {
 //             // Redirect to dashboard if already logged in
-//             window.location.href = "/dashboard";
+//             window.location.href = "/pages/dashboard";
 //         }
-//     } else if (currentPath === "/dashboard") {
+//     } else if (currentPath === "/pages/dashboard") {
 //         if (!token) {
 //             // Redirect to login if not logged in
 //             window.location.href = "/";

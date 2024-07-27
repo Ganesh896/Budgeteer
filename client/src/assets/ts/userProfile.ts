@@ -1,5 +1,6 @@
 import axios from "axios";
 import { baseUrl } from "../../main";
+import { getUserDetails } from "./utils/getUser";
 
 // render user details
 function renderUserDetails(userDetails: any) {
@@ -10,14 +11,17 @@ function renderUserDetails(userDetails: any) {
     const fullName = userDetails.firstName + " " + userDetails.lastName;
     if (headerProfileElement) {
         headerProfileElement.innerHTML = `
-            <div class="header__profile--img">
-                <img src="${userDetails.profile || "./public/images/default-profile.jpg"}" id="profile__img" alt="Profile Image" />
-            </div>
-            <div class="header__right--details">
-                <h5 class="normal__text">${fullName || "User"}</h5>
-                <p class="meta__text">${userDetails.email || "user@example.com"}</p>
-            </div>
-        `;
+                        <div class="header__profile--img">
+                            <a href="profile.html">
+                                <img src="${userDetails.profile || "/images/default-profile.png"}" id="profile__img" alt="img" />
+                            </a>
+                        </div>
+                        <div class="header__right--details">
+                            <a href="profile.html">
+                                <h5 class="normal__text">${fullName || "User"}</h5>
+                            </a>
+                            <p class="meta__text">${userDetails.email || "user@example.com"}</p>
+                        </div> `;
     }
 
     if (welcomeMsgElement) {
@@ -26,7 +30,7 @@ function renderUserDetails(userDetails: any) {
     // profile on profile section
     const profileDetailContainer = document.querySelector(".updatedetail__form--container") as HTMLDivElement;
     const profileImage = document.getElementById("profile__picture") as HTMLImageElement;
-    profileImage.src = userDetails.profile;
+    profileImage.src = userDetails.profile || "/images/default-profile.png";
 
     if (profileDetailContainer) {
         profileDetailContainer.innerHTML = `
@@ -54,6 +58,7 @@ function renderUserDetails(userDetails: any) {
     }
 }
 
+// update user details call
 function updateUserDetails() {
     const userDetailUpdateForm = document.getElementById("updatedetail__form") as HTMLFormElement;
     userDetailUpdateForm?.addEventListener("submit", function (event) {
@@ -78,10 +83,13 @@ function updateUserDetails() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+// load the content
+document.addEventListener("DOMContentLoaded", async function () {
     const token = localStorage.getItem("authToken");
     if (token) {
-        const userDetails = JSON.parse(localStorage.getItem("userDetails") || "{}");
+        // gettting current loggedin user from database
+        const userDetails = await getUserDetails();
+
         renderUserDetails(userDetails);
         updateUserDetails();
     }
@@ -92,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const updateInfoBtn = document.querySelector(".update__info") as HTMLButtonElement;
 
     editInfoBtn?.addEventListener("click", function () {
+        console.log("Edit button");
         updateInputs.forEach((input) => {
             input.removeAttribute("disabled");
         });
