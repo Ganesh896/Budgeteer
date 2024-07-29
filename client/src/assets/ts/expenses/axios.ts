@@ -2,16 +2,17 @@ import axios from "axios";
 import { baseUrl } from "../../../main";
 
 // get expenses
-export const getExpenses = async (size: number = 4, page: number = 2) => {
+export const getExpenses = async (size: number = 4, page: number = 1) => {
     const token = localStorage.getItem("authToken");
     if (token) {
         try {
             const response = await axios.get(`${baseUrl}expense?size=${size}&&page=${page}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
+                    "Content-Type": "json",
                 },
             });
-            console.log(response.data.data);
+
             return response.data.data;
         } catch (error) {
             console.log(error);
@@ -45,8 +46,15 @@ export function addExpense() {
     const responseMsg = document.querySelector(".response__msg") as HTMLParagraphElement;
     const addExpenseFormEle = document.getElementById("addexpense__form") as HTMLFormElement;
 
-    addExpenseFormEle?.addEventListener("submit", (event) => {
+    // Check if the form already has a submit event listener
+    if (addExpenseFormEle) {
+        addExpenseFormEle.removeEventListener("submit", handleFormSubmit);
+        addExpenseFormEle.addEventListener("submit", handleFormSubmit);
+    }
+
+    function handleFormSubmit(event: Event) {
         event.preventDefault();
+        console.log("Form submitted");
         let formData = new FormData(addExpenseFormEle);
         let data = Object.fromEntries(formData.entries());
 
@@ -79,7 +87,7 @@ export function addExpense() {
                 responseMsg.style.color = "green";
 
                 console.log(response.data);
-                addExpenseFormEle.reset(); // reseting form
+                addExpenseFormEle.reset(); // resetting form
             })
             .catch(function (error) {
                 console.error(error.response.data);
@@ -87,5 +95,5 @@ export function addExpense() {
                 responseMsg.innerText = error.response;
                 responseMsg.style.color = "red";
             });
-    });
+    }
 }

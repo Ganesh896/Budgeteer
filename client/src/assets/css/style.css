@@ -752,6 +752,7 @@ main {
   margin-top: 16px;
 }
 .dashboard .expenses {
+  width: 100%;
   border: 2px solid #cfced2;
   border-radius: 20px;
   padding: 20px;
@@ -856,6 +857,10 @@ main {
 }
 .dashboard .expenses__group .groups__header {
   margin-bottom: 16px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
 }
 .dashboard .expenses__group .groups__header input {
   padding: 16px;
@@ -866,7 +871,7 @@ main {
 }
 .dashboard .expenses__group .groups__header button {
   padding: 16px;
-  width: fit-content;
+  min-width: fit-content;
   font-size: 14px;
 }
 .dashboard .expenses__group .groups__card {
@@ -874,7 +879,7 @@ main {
   border-radius: 10px;
   padding: 20px;
 }
-.dashboard .expenses__group .groups__card--name {
+.dashboard .expenses__group .groups__card .group__name {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -885,8 +890,33 @@ main {
   width: 100%;
   margin-bottom: 16px;
 }
-.dashboard .expenses__group .groups__card--name i {
+.dashboard .expenses__group .groups__card .group__name i {
   font-size: 28px;
+}
+.dashboard .expenses__group .groups__card--invite input {
+  padding: 16px;
+  border: 2px solid #cfced2;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+}
+.dashboard .expenses__group .groups__card--invite button {
+  padding: 16px;
+  min-width: fit-content;
+  max-width: 50px;
+  font-size: 14px;
+}
+.dashboard .expenses__group .groups__card--users img {
+  height: 40px;
+  width: 40px;
+  overflow: hidden;
+}
+.dashboard .expenses__group .groups__card--users .groups__card--user {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
 }
 .dashboard .expenses__group .expenses {
   flex-basis: 70%;
@@ -1107,6 +1137,15 @@ main {
     gap: 10px;
     flex-direction: row;
     width: 100%;
+  }
+  .expenses__group {
+    flex-direction: column;
+  }
+  .expenses__group .groups__header input {
+    width: 100%;
+  }
+  .expenses__group .groups__header button {
+    max-width: 100px;
   }
   .savingbudgets {
     flex-direction: column;

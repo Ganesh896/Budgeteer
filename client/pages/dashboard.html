@@ -39,10 +39,10 @@
                                 <a href="analytics.html"><i class="bx bx-money"></i> <span>Analytics</span></a>
                             </li>
                             <li class="sidebar__item">
-                                <a href="group.html"><i class='bx bx-group'></i> <span>Groups</span></a>
+                                <a href="group.html"><i class="bx bx-group"></i> <span>Groups</span></a>
                             </li>
                             <li class="sidebar__item">
-                                <a href="/settings"><i class="bx bx-cog"></i> <span>Settings</span></a>
+                                <a href="setting.html"><i class="bx bx-cog"></i> <span>Settings</span></a>
                             </li>
                         </ul>
                         <div class="sidebar__bottom">
@@ -77,49 +77,8 @@
                 </div>
 
                 <div class="addexpense">
-                    <button class="addexpense__btn"><i class="bx bx-plus"></i> Add Expense</button>
-                    <div class="addexpense__modal form__modal">
-                        <div class="addexpense__modal--header">
-                            <h1 class="title">Add expense</h1>
-                        </div>
-                        <button class="close__modal"><i class="bx bx-x"></i></button>
-                        <form id="addexpense__form">
-                            <div class="form__group">
-                                <label for="title">Title</label>
-                                <input type="text" name="title" placeholder="Title" id="title" required />
-                            </div>
-                            <div class="form__group">
-                                <label for="category">Select category</label>
-                                <div class="form__group--category">
-                                    <select name="categoryId" id="category">
-                                        <option value="">--- Select Category ---</option>
-                                    </select>
-                                    <input type="text" placeholder="Add category" name="categoryName" class="addcategory__input hide" />
-                                    <button type="button" class="addcategory__btn">+ Add Category</button>
-                                </div>
-                            </div>
-                            <div class="form__group form__groups">
-                                <div>
-                                    <label for="amount">Amount</label>
-                                    <input type="text" name="amount" placeholder="Amount" id="amount" required />
-                                </div>
-                                <div>
-                                    <label for="paymentmethod">Payment Method</label>
-                                    <select name="paymentMethod" id="paymentmethod" required>
-                                        <option value="E-Sewa">E-sewa</option>
-                                        <option value="Phonepe">Phonepe</option>
-                                        <option value="Cash">Cash</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form__group">
-                                <label for="description">Description</label>
-                                <textarea name="description" placeholder="description" id="description"></textarea>
-                            </div>
-                            <p class="response__msg"></p>
-                            <button type="submit" class="l__button l__button--primary">Submit</button>
-                        </form>
-                    </div>
+                    <button class="addexpense__btn" id="addexpense__button"><i class="bx bx-plus"></i> Add Expense</button>
+                    <div class="addexpense__modal form__modal" id="addExpenseModal"></div>
                 </div>
 
                 <div class="amount__cards">
@@ -284,7 +243,6 @@
         </main>
 
         <script src="../src/assets/ts/dashboard.ts" type="module"></script>
-        <script src="../src/assets/ts/expenses/expenses.ts" type="module"></script>
-        <script src="../src/assets/ts/userProfile.ts" type="module"></script>
+        <!-- <script src="../src/assets/ts/userProfile.ts" type="module"></script> -->
     </body>
 </html>

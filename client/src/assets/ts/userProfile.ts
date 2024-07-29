@@ -1,60 +1,29 @@
 import axios from "axios";
 import { baseUrl } from "../../main";
 import { getUserDetails } from "./utils/getUser";
+import { WelcomeMessageCard } from "./card/welcomeMessageCard";
+import { UserProfile } from "./card/userProfile";
+import { UserDetails } from "./card/userDetails";
 
 // render user details
-function renderUserDetails(userDetails: any) {
+function renderUserDetails(user: any) {
     // profile on dashboard header
     const headerProfileElement = document.querySelector(".header__profile") as HTMLDivElement;
     const welcomeMsgElement = document.getElementById("welcome__msg") as HTMLHeadElement;
 
-    const fullName = userDetails.firstName + " " + userDetails.lastName;
+    welcomeMsgElement.innerHTML = WelcomeMessageCard(user.firstName);
+
     if (headerProfileElement) {
-        headerProfileElement.innerHTML = `
-                        <div class="header__profile--img">
-                            <a href="profile.html">
-                                <img src="${userDetails.profile || "/images/default-profile.png"}" id="profile__img" alt="img" />
-                            </a>
-                        </div>
-                        <div class="header__right--details">
-                            <a href="profile.html">
-                                <h5 class="normal__text">${fullName || "User"}</h5>
-                            </a>
-                            <p class="meta__text">${userDetails.email || "user@example.com"}</p>
-                        </div> `;
+        headerProfileElement.innerHTML = UserProfile(user);
     }
 
-    if (welcomeMsgElement) {
-        welcomeMsgElement.textContent = `Welcome back, ${userDetails.firstName || "User"}!`;
-    }
     // profile on profile section
     const profileDetailContainer = document.querySelector(".updatedetail__form--container") as HTMLDivElement;
     const profileImage = document.getElementById("profile__picture") as HTMLImageElement;
-    profileImage.src = userDetails.profile || "/images/default-profile.png";
+    profileImage.src = user.profile || "/images/default-profile.png";
 
     if (profileDetailContainer) {
-        profileDetailContainer.innerHTML = `
-                                <div class="form__groups">
-                                    <div class="form__group">
-                                        <input type="text" name="firstName" value="${userDetails.firstName}" class="update__field" disabled />
-                                    </div>
-                                    <div class="form__group">
-                                        <input type="text" name="lastName" value="${userDetails.lastName}" class="update__field" disabled />
-                                    </div>
-                                </div>
-                                <div class="form__groups">
-                                    <div class="form__group">
-                                        <input type="email" name="email" value="${userDetails.email}" class="update__field" disabled />
-                                    </div>
-                                    <div class="form__group">
-                                        <input type="number" name="phone" value="${userDetails.phone}" class="update__field" disabled />
-                                    </div>
-                                </div>
-
-                                <div class="form__group">
-                                    <label>Address</label>
-                                    <textarea name="address" class="update__field" disabled>${userDetails.address}</textarea>
-                                </div>`;
+        profileDetailContainer.innerHTML = UserDetails(user);
     }
 }
 
@@ -107,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         updateInfoBtn.classList.add("show");
     });
 
-    // update profile ficture
+    // update profile picture
     const uploadProfilePictureBtn = document.querySelector(".profile__picture--upload") as HTMLButtonElement;
     const closeModalBtn = document.querySelector(".close__modal") as HTMLButtonElement;
     const uploadProfilePictureForm = document.getElementById("update__profile--form") as HTMLFormElement;

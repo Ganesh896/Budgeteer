@@ -117,6 +117,20 @@
         }
     }
 
+    .expenses__group {
+        flex-direction: column;
+
+        .groups__header {
+            input {
+                width: 100%;
+            }
+
+            button {
+                max-width: 100px;
+            }
+        }
+    }
+
     .savingbudgets {
         flex-direction: column;
         .analytics__budget,

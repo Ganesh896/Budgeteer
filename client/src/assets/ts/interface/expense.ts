@@ -4,4 +4,6 @@ export interface Expense {
     paymentMethod: string;
     amount: number;
     categoryId: number;
+    createdAt: string;
+    categoryName: string;
 }

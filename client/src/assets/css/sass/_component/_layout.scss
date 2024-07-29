@@ -560,6 +560,7 @@ main {
 
     // expenses
     .expenses {
+        width: 100%;
         border: 2px solid $grey-light;
         border-radius: 20px;
         padding: 20px;
@@ -661,6 +662,7 @@ main {
 
                 &__header {
                     margin-bottom: 16px;
+                    @include flex-box(flex-start, center, 10px);
 
                     input {
                         padding: 16px;
@@ -672,7 +674,7 @@ main {
 
                     button {
                         padding: 16px;
-                        width: fit-content;
+                        min-width: fit-content;
                         font-size: 14px;
                     }
                 }
@@ -681,7 +683,7 @@ main {
                     border-radius: 10px;
                     padding: 20px;
 
-                    &--name {
+                    .group__name {
                         @include flex-box(flex-start, center, 12px);
                         background: $tertiary;
                         padding: 16px;
@@ -691,6 +693,33 @@ main {
 
                         i {
                             font-size: 28px;
+                        }
+                    }
+
+                    &--invite {
+                        input {
+                            padding: 16px;
+                            border: 2px solid $grey-light;
+                            border-radius: 5px;
+                            outline: none;
+                            font-size: 16px;
+                        }
+
+                        button {
+                            padding: 16px;
+                            min-width: fit-content;
+                            max-width: 50px;
+                            font-size: 14px;
+                        }
+                    }
+
+                    &--users {
+                        img {
+                            @include hw(40px, 40px);
+                        }
+                        .groups__card--user {
+                            @include flex-box(flex-start, center, 16px);
+                            margin-top: 16px;
                         }
                     }
                 }

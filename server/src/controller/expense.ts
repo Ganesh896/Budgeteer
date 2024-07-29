@@ -25,15 +25,14 @@ export const updateExpense = asyncHandler(async (req: Request, res: Response) =>
 });
 
 // get expenses
-export async function getExpenses(req: Request, res: Response) {
+export const getExpenses = async (req: Request, res: Response) => {
     const { query } = req;
     const { id } = req.user!;
 
     const data = await expenseService.getExpenses(id, query);
 
     res.status(HttpStatusCodes.OK).json(new ApiResponse(HttpStatusCodes.OK, data));
-}
-
+};
 // delete expense
 export const deleteExpense = asyncHandler(async (req: Request, res: Response) => {
     const { id } = req.params;

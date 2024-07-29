@@ -1,9 +1,9 @@
 import { Knex } from "knex";
 
-const TABLE_NAME = "expense_group";
+const TABLE_NAME = "invites";
 
 /**
- * Create table expense_group.
+ * Create table invites.
  *
  * @param   {Knex} knex
  * @returns {Promise}
@@ -12,9 +12,13 @@ export async function up(knex: Knex): Promise<void> {
     return knex.schema.createTable(TABLE_NAME, (table) => {
         table.bigIncrements();
 
-        table.string("expense_id", 100).notNullable().references("id").inTable("expenses").onDelete("cascade");
+        table.string("sender_id", 100).notNullable().references("id").inTable("users").onDelete("cascade");
 
-        table.bigInteger("user_group_id").notNullable().references("id").inTable("user_group").onDelete("cascade");
+        table.string("receiver_id", 100).notNullable().references("id").inTable("users").onDelete("cascade");
+
+        table.bigInteger("group_id").notNullable().references("id").inTable("groups").onDelete("cascade");
+
+        table.boolean("is_accepted").notNullable();
 
         table.timestamp("created_at").notNullable().defaultTo(knex.raw("now()"));
 
@@ -27,7 +31,7 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 /**
- * Drop table expense_group.
+ * Drop table invites.
  *
  * @param   {Knex} knex
  * @returns {Promise}

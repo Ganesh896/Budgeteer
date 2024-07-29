@@ -1,13 +1,18 @@
+import { ExpenseCard } from "../card/expense";
+import { UserProfile } from "../card/userProfile";
+import { WelcomeMessageCard } from "../card/welcomeMessageCard";
 import { Expense } from "../interface/expense";
-import { addExpense, getExpenseCategory, getExpenses } from "./axios";
+import { getUserDetails } from "../utils/getUser";
+import { renderUserProfile } from "../utils/headerProfile";
+import { OpenAddExpenseModal } from "../utils/openAddExpenseModal";
+import { getExpenseCategory, getExpenses } from "./axios";
 
 // render categories on addexpense form for select
 export async function renderCategory() {
     const categoryList = document.getElementById("category")!;
     const categories = await getExpenseCategory();
-
+    categoryList.innerHTML = "";
     let maxCategoryId = 0;
-    console.log(categories);
     categories.forEach((category: any) => {
         let optionEle = document.createElement("option");
         optionEle.setAttribute("value", `${category.id}`);
@@ -21,20 +26,13 @@ export async function renderCategory() {
 }
 
 // rendering expense of current user on dashboard
-function renderUserExpenses(expenses: Expense[]) {
+export function renderUserExpenses(expenses: Expense[]) {
     const expenseListEle = document.getElementById("expenses__list")!;
+
     expenseListEle.innerHTML = "";
     expenses.forEach((expense: any) => {
         let tableRow = document.createElement("tr");
-        tableRow.innerHTML = `
-                    <tr>
-                        <td>${expense.createdAt}</td>
-                        <td>Rs.${expense.amount}</td>
-                        <td>${expense.title}</td>
-                        <td>${expense.paymentMethod}</td>
-                        <td>${expense.categoryName}</td>
-                    </tr>
-                    `;
+        tableRow.innerHTML = ExpenseCard(expense);
         expenseListEle.appendChild(tableRow);
     });
 }
@@ -45,11 +43,19 @@ document.addEventListener("DOMContentLoaded", async function () {
     const nextButton = document.querySelector(".expenses__next--btn") as HTMLButtonElement;
     const currentPageEle = document.querySelector(".current__page") as HTMLSpanElement;
     const totalPageEle = document.querySelector(".total__pages") as HTMLSpanElement;
-    const size = 2;
+
+    // header profile
+    renderUserProfile();
+
+    // open addexpense modal
+    OpenAddExpenseModal();
+
+    // expenses pagination
+    const size = 3;
     let page = 1;
     const expenses = await getExpenses(size, 1);
     const total = expenses.meta.total.count;
-    totalPageEle.innerText = total / size + "";
+    totalPageEle.innerText = Math.ceil(total / size) + "";
     if (page === 1) {
         prevButton.setAttribute("disabled", "true");
     }
@@ -76,7 +82,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const prevPage = await getExpenses(size, page);
         renderUserExpenses(prevPage.data);
 
-        if (page === total / size) {
+        if (page === Math.ceil(total / size)) {
             nextButton.setAttribute("disabled", "true");
         } else {
             nextButton.removeAttribute("disabled");
@@ -89,7 +95,5 @@ document.addEventListener("DOMContentLoaded", async function () {
         const sortedExpenses = expenses.data.sort((a: Expense, b: Expense) => b.amount - a.amount);
         renderUserExpenses(sortedExpenses);
     });
-
-    addExpense();
     renderUserExpenses(expenses.data);
 });
