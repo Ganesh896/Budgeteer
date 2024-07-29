@@ -3,23 +3,23 @@ import { Request } from "../interface/atuth";
 import HttpStatusCodes from "http-status-codes";
 import { asyncHandler } from "../utils/asyncHandler";
 
-import * as budgetService from "../service/budget";
+import * as savingGoalService from "../service/savingGoal";
 import { ApiResponse } from "../utils/response";
 
-// add budget
-export const addBudget = asyncHandler(async (req: Request, res: Response) => {
+// add saving goal
+export const addSavingGoal = asyncHandler(async (req: Request, res: Response) => {
     const { id } = req.user!;
     const { body } = req;
-    const message = await budgetService.addBudget(id, body.amount);
+    const message = await savingGoalService.addSavingGoal(id, body);
 
     res.status(HttpStatusCodes.OK).json(new ApiResponse(HttpStatusCodes.OK, message));
 });
 
-// get budget
-export const getBudget = async (req: Request, res: Response) => {
+// get saving goal
+export const getSavingGoal = async (req: Request, res: Response) => {
     const { id } = req.user!;
 
-    const data = await budgetService.getBudget(id);
+    const data = await savingGoalService.getSavingGoal(id);
 
     res.status(HttpStatusCodes.OK).json(new ApiResponse(HttpStatusCodes.OK, data));
 };

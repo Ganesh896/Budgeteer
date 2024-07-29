@@ -1,7 +1,7 @@
 import { SavingGoal } from "../interface/savingGoal";
 import { BaseModel } from "./base";
 
-export class BudgetModel extends BaseModel {
+export class SavingGoalModel extends BaseModel {
     // add saving goal
     static addSavingGoal(userId: string, savingGoal: SavingGoal) {
         const { goalName, goalAmount } = savingGoal;
@@ -9,13 +9,13 @@ export class BudgetModel extends BaseModel {
             userId,
             goalName,
             goalAmount,
-            currentSave: 0,
+            currentAmount: 0,
         };
         return this.queryBuilder().insert(goalToAdd).table("savingGoals");
     }
 
     // get saving goal
     static getSavingGoal(userId: string) {
-        return this.queryBuilder().select("galName", "goalAmount", "currentSave").from("savingGoals").where({ userId });
+        return this.queryBuilder().select("goalName", "goalAmount", "currentAmount").from("savingGoals").where({ userId });
     }
 }
