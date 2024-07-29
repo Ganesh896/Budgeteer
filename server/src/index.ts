@@ -12,18 +12,23 @@ const PORT = config.port;
 const app = express();
 
 // limiter to limit requests
-const limiter = rateLimiter({
-    windowMs: 60 * 1000,
-    limit: 10,
-    message: "Too many requests",
-});
+// const limiter = rateLimiter({
+//     windowMs: 60 * 1000,
+//     limit: 10,
+//     message: "Too many requests",
+// });
 
 // aiddleware to set various HTTP headers for security
-app.use(helmet());
+// app.use(helmet());
 
-app.use(limiter);
+// app.use(limiter);
 
-app.use(cors({ credentials: true, origin: true }));
+const corsOptions = {
+    origin: "*",
+    credentials: true, //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
+};
+app.use(cors());
 
 // middleware to parse incoming JSON requests
 app.use(express.json());

@@ -9,8 +9,6 @@ export async function generateAccessRefreshToken(user: User) {
         lastName: user.lastName,
         email: user.email,
         phone: user.phone,
-        address: user.address,
-        profile: user.profile,
     };
 
     // access token with a specific expiry time

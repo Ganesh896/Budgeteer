@@ -7,7 +7,7 @@ const config = {
 
     jwt: {
         secret: process.env.JWT_SECRET,
-        accessTokenExpiryMS: 5000,
+        accessTokenExpiryMS: 10000,
         refreshTokenExpiryMS: 50000,
     },
 
@@ -18,6 +18,11 @@ const config = {
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         name: process.env.DB_NAME,
+    },
+    cloudinary: {
+        cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+        api_key: process.env.CLOUDINARY_API_KEY,
+        api_secret: process.env.CLOUDINARY_API_SECRET,
     },
 };
 

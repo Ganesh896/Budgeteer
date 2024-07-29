@@ -14,7 +14,11 @@ export async function up(knex: Knex): Promise<void> {
 
         table.string("user_id", 100).notNullable().references("id").inTable("users").onDelete("cascade");
 
-        table.string("name", 200).notNullable();
+        table.bigInteger("goal_name").notNullable();
+
+        table.bigInteger("goal_amount").notNullable();
+
+        table.bigInteger("current_amount").notNullable();
 
         table.timestamp("created_at").notNullable().defaultTo(knex.raw("now()"));
 
